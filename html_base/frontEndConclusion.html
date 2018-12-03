@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>前端内容的笨功夫</title>
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../static/css/scroll.css">
+    <link rel="stylesheet" href="../static/css/zilingUtil.css">
+</head>
+<body>
+    <div class="content">
+        <div id='navigation'>
+            <a href="./echartConclusion.html">echart总结</a>
+        </div>
+    </div>
+
+    
+    <header>笨功夫总结前端知识点</header>
+    <div class="content">
+        <div id="scroll">
+            <h3>1. 窗口滑动范例： 两层div，里层的div相对于外层div滑动。
+                使用div的onmousewheel事件。
+            </h3>
+            <div class="warning_wrap">
+                <div class="warning">
+                </div>
+            </div>
+            
+            <button id="partW"> add part warning</button>
+            
+            <h3>水平滑动显示问题</h3>
+            <div class="capter_warp">
+                <div class="content_right right_icon">
+                    
+                </div>
+                <div class="capter">
+                </div>
+            </div>
+        </div> <!-- scroll end -->
+        <hr class="hr_dashed"> 
+        <div id="pic_center">
+            <h3>图片居中</h3>
+            <div id="img_center">
+                <span id="span_refer">
+                    <img src="../static/images/text.jpg" alt="">
+                </span>
+            </div>
+        </div>
+        <hr class="hr_dashed">
+        <div id="triangle">
+            <h3>3: border的基本知识</h3>
+
+            <table>
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <span class="triangle"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>
+                        <span class="border_example"></span>
+                    </td>
+                </tr>
+            </table>
+            <p>使用border-image与background-image的区别，哪个更好呢。 border-image的使用范围不大</p>
+            <div class="border_img">
+            </div>
+        </div>
+        <div id="css3">
+            <h3>4 css3 new property</h3>
+            <div>
+                <li>背景动态变化 animation</li>    
+                <span id="line_time"></span><br>
+            </div>
+            <div>
+                <li>css3 背景渐变</li>
+                <div id="grandent1"></div>
+            </div>
+            <div>
+                <li>字体颜色变化，只适用于chrome firefox，但ie并不适用。</li>
+                <h2 id="grandent2">
+                    ziling is the best, this grandent is fixed on chrome firefox, except ie
+                </h2>
+            </div>
+            <div>
+                <li>背景透明度变化</li>
+                <div id="grandent3">
+                    
+                </div>
+
+            </div>
+            <div id="grandent4">
+                <span>ziling is the best</span>
+            </div>
+
+            <div id="">
+                <li>transition</li>
+                <div id="transition"></div>
+            </div>
+            <br>
+            <div id="animation">
+                <div id="animation1"></div>
+            </div>
+        </div>
+        <div id="background">
+            <h3>5 background 属性枚举</h3>
+            <p>background params</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>属性</th>
+                        <th>可用值</th>
+                        <th>初始值</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>background-attachment</td>
+                        <td>fixed, scroll, local, inhert</td>
+                        <td>scroll</td>
+                    </tr>
+                    <tr>
+                        <td> background-clip</td>
+                        <td>border-box, padding-box, content-box, inherit</td>
+                        <td>border-box</td>
+                    </tr>
+                    <tr>
+                        <td>background-color</td>
+                        <td>#bbff00, rgb(255, 255,128), hsla(50, 33%, 25%, 0.75) transparent</td>
+                        <td>transparent</td>
+                    </tr>
+                    <tr>
+                        <td>background-image</td>
+                        <td>url("img_path")</td>
+                        <td>none</td>
+                    </tr>
+                    <tr>
+                        <td>background-origin:背景图片起始位置</td>
+                        <td>border-box, padding-box, content-box</td>
+                        <td>padding-box</td>
+                    </tr>
+                    <tr>
+                        <td>background-position</td>
+                        <td>0% 0%, top left</td>
+                    </tr>
+                    <tr>
+                        <td>background-repeat</td>
+                        <td>repeat, space, round, no-repeat</td>
+                        <td>repeat</td>
+                    </tr>
+                    <tr>
+                        <td>background-size</td>
+                        <td></td>
+                        <td>auto auto</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="table_learn">
+            <h3>table的基本属性和设置</h3>
+            <p>设置tr之间显露背景的设置</p>
+            <table id="table">
+                <thead>
+                    <tr><td>ziling</td><td>be </td></tr>
+                </thead>
+                <tbody>
+                    <tr><td>mao</td><td>qiong</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="list">
+            <h3>5 列表的基本设置</h3>
+            <ol class="normal">
+                list1
+                <li>hello</li>
+                <li>world</li>
+            </ol>
+            <ul class="shortcut">list2
+                <li>ziling</li>
+                <li>best</li>
+            </ul>
+        </div>
+        <div id="select_set">
+            <h3>select选项设置</h3>
+            <select id="ziling_love">
+                <option value="0">beyond</option>
+                <option value="1">sunshine</option>
+                <option value="2">sichuan</option>
+            </select>
+            <br>
+            <select class="sel">
+                <option value="0">beyond</option>
+                <option value="1">sunshine</option>
+                <option value="2">sichuan</option>
+            </select>
+        </div>
+        <div>
+            <h3>6新文本属性，在页面展示中这个是容易发生纰漏的地方</h3>
+            <div>
+                <span>对于规定了展示的宽度之后，用white-space或者text-overflow这两个属性来进行内容的调整。</span><br>
+                <p class="no_overflow">ziling is the bestera</p>
+            </div>
+        </div>
+        <div>
+            <h3>7 </h3>
+        </div>
+    </div>
+
+    <div class="content">
+        <div>
+            <h2>8 css 简单分页</h2>
+            <a href="http://www.runoob.com/css3/css3-pagination.html#">简单分页实践</a>
+        </div>
+        <div>
+            <h2>9 弹性盒子实践</h2>
+        </div>
+        <div class="base_js">
+            <h2>10 基本的JS事件添加和绑定，在Corsface系统中的绑定情况。</h2>
+
+        </div>
+        <div>
+            <h2>11 css 动态效果</h2>
+            <div class="base_knowledge">
+                <p>1. jquery 的animation</p>
+                <p>2. css的animation 基础知识</p>
+
+            </div>
+            <h2>12 css 动态效果进阶</h2>
+            <div>
+                <p>1.基本轮播图的实现,思考有哪些种方式</p>
+                <p>2.大数据平台的切换效果有哪些，看看能不能升级 <a href="http://192.168.1.33:5555/bigdata/solution3">西站大数据平台的动态效果</a></p>
+                <p>3.页面切换效果,<a href="http://www.yyyweb.com/demo/page-transitions/">页面切换效果</a></p>
+                <p>4. 页面之间的切换 <a href="http://git.blivesta.com/animsition/">A SIMPLE AND EASY JQUERY PLUGIN FOR CSS ANIMATED PAGE TRANSITIONS</a></p>
+                <div id="anminate_area">
+                    <p>一个区域两个模块的切换效果实现</p>
+                    <div class="anminate_content">第一个content</div>
+                    <div class="anminate_content hidden_t">第二个content</div>
+                </div>
+    
+            </div>
+        </div>
+        
+        <div>
+            <h1>14 float知识相关总结</h1>
+            <div id="float_container">
+                <div class="clearfix">
+                    <img src="../static/images/right_icon3.png" alt="" class="left">
+                </div>
+                <div>子陵float测试问题</div>
+            </div>
+        </div>
+        <div>
+            <h1>15 js 拖拽事件效果的两种实现方式</h1>
+            <h2>draggable api实现方式</h2>
+            <h2>js计算实现方式</h2>
+        </div>
+        <div id='scroll_id'>
+            <h1>隐藏下拉滚动条的均试用方式</h1>
+        </div>
+    </div>
+    <script src="../static/Include/jquery-1.9.1.min.js"></script>
+    <script src="../static/js/scroll.js"></script>
+    <script src="../static/js/zilingUtil.js"></script>
+</body>
+
+</html>

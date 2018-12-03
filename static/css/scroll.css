@@ -1,0 +1,289 @@
+#navigation a{
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid #074B9A;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size:18px;
+    font-weight: bold;
+}
+.content{
+    width:1000px;
+    height:100%;
+    margin:20px auto;
+}
+header{
+    text-align: center;
+    font-size:30px;
+}
+.hr_dashed{
+    border:1px dashed blue;
+}
+.warning{
+    width:230px;
+    background-color:#FDBEBE;
+    position:absolute;
+}
+.warning_wrap{
+    height:400px;
+    overflow: hidden;
+    position:relative;
+}
+
+.singleWarning{
+    height:100px;
+    width:100px;
+    display:inline-block;
+    position:relative;
+    background-color:#2AC4E9;
+    margin:2px;
+}
+
+.capter_warp{
+    width:500px;
+    height: 105px;
+    overflow:hidden;
+    position:relative;
+}
+.capter{
+    height:104px;
+    background-color:#9EAC13;
+    /*display:inline-block;*/
+    position:absolute;
+    white-space: nowrap;
+}
+.content_right{
+    position:absolute;
+    right:0;
+    height:100px;
+    background-color:#002c40;
+    width:30px;
+    z-index:3;
+}
+.right_icon{
+    background-image:url(../images/titleLeft.png);
+    background-position:center;
+    background-repeat:no-repeat;
+    cursor:pointer;
+}
+
+#img_center{
+    height:400px;
+    width:400px;
+    text-align:center;
+    margin:10px;
+    border:1px solid;
+    display:table;
+}
+
+#span_refer{
+    display:table-cell;
+    vertical-align:middle;
+}
+.triangle{
+    border: 10px solid transparent;
+    border-left-color:#05f7e9;
+    display:inline-block;
+    border-left-width: 14px;
+}
+.border_example{
+    display:inline-block;
+    width:20px;
+    height:20px;
+    border:1px dotted red;
+}
+.border_img{
+    border: solid transparent;
+    border-width:5px 10px;
+    width:480px;
+    height:322px;
+    border-image: url("http://192.168.1.33:5555/static/Themes/Images/WestBig/left3_bg.png") 5 10;
+}
+#css3{
+    position:relative;
+}
+#line_time{
+    /*position:absolute;*/
+    display: inline-block;
+    width: 80px;
+    height:80px;
+
+    background: url("../images/right_icon3.png") no-repeat center;
+    /*-webkit-animation:clock 5s;
+    -o-animation:clock 5s;*/
+    animation:clock 5s;
+    animation-iteration-count: infinite;
+    /*-webkit-animation-iteration-count:infinite;*/
+    animation-timing-function:linear;
+    /*-webkit-animation-timing-function:linear;*/
+}
+@keyframes clock
+{
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+/*@-webkit-keyframes clock {
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+@-ms-keyframes clock {
+    from {-ms-transform: rotate(0deg);}
+    to {-ms-transform: rotate(360deg);}
+}*/
+
+table{
+    width:50%;
+    color:black;
+    border-collapse:collapse;
+    /*border:1px dashed;*/
+    text-align: center;
+}
+table th, table td{
+    border:1px dashed;
+    /*vertical-align: middle;
+        基准线默认为 middle，同时有 top，bottom 等属性
+     */ 
+}
+#table{
+    background: red;
+}
+#table tr{
+    border:3px solid transparent;
+}
+#table td{
+    background-color:yellow;
+    background-clip:padding-box;
+}
+ol.normal{
+    list-style:circle;
+}
+.sel{
+    background: #00374f url("../images/select_bg.png") no-repeat right center;
+    padding-right:24px;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    background-size:22px 22px;
+    line-height:100%;
+    border-color:1px solid #00ace4;
+    height:26px;
+    width:140px;
+    color:#83CCE4;
+    cursor:pointer;
+    vertical-align:middle;
+    font-size:20px;
+}
+select::-ms-expand{
+    /*ie中去掉倒三角*/
+    display:none; 
+}
+
+#grandent1{
+    height:20px;
+    background:linear-gradient(to right, blue, white);
+}
+
+#grandent2 {
+    text-transform: uppercase;
+    background: linear-gradient(to bottom, #30CFD0 0%, red 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font: {
+        size: 20vw;
+        family: $font;
+    };
+}
+#grandent3{
+    height:400px;
+    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1)), url("../images/totoro.jpg"), no-repeat;
+    background-size:1000px 400px;
+}
+#grandent4{
+    text-align:center;
+    vertical-align: middle;
+    height:260px;
+    width:260px;
+    line-height:260px;
+    /*background: -webkit-radial-gradient(circle, red, green);*/
+    background: radial-gradient(transparent 50%, rgba(22, 51, 203));
+}
+.text_attr{
+    width:60px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+#transition{
+    width:100px;
+    height:100px;
+    background: blue;
+    transition:width 2s, height 2s, transform 2s;
+}
+#transition:hover{
+    width:200px;
+    height:200px;
+    transform:rotate(180deg);
+}
+
+#animation1{
+    width:200px;
+    height:200px;
+    background:blue;
+}
+#animation1:hover{
+    
+    animation:1s rainbow infinite;
+}
+@keyframes rainbow{
+    0%{background:#c00;}
+    50%{background:orgnge;}
+    100%{background:yellowgreen;}
+}
+
+#anminate_area{
+    width:100%;
+    height:100%;
+    background-color:#1188C3;
+}
+.anminate_content{
+    width:100%;
+    height:100%;
+}
+.hidden_t{
+    display:none;
+}
+
+.clearfix{
+    *zoom:1;
+}
+.clearfix:after{
+    content:"";
+    display:table;
+    clear:both;
+}
+.clear_both{
+    clear:both;
+}
+.left{
+    float:left;
+}
+.right{
+    float:right;
+}

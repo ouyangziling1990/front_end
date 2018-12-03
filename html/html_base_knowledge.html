@@ -1,0 +1,30 @@
+<html>
+    <title>html-base-knowledge</title>
+    <body>
+        <!-- form标签把相应的数据规整的送到相应的server端 -->
+        <!-- 这是比较简单的form格式，需要一些好看和常用的数据 -->
+        <form action="recive.action" method="get/post">
+            <label for="name">姓名:</label>
+            <input type="text" name="name" id="name">
+
+            <label for="age">年龄</label>
+            <input type="text" name="age" id="age">
+            <input type="submit" value="save">
+            <!-- form 包含几 -->
+        </form>
+        
+        <!-- input是很常用的表单输入方式 -->
+        <!-- input的type{text, submit, button, image, radio, reset, password, checkbox, file}, 每一个标签都很有意思 -->
+        <label for="in"></label>
+        <input type="text" name="in" id="in">
+        
+        <!-- select 也是form标签中常用的元素，需要注意其selected属性 -->
+        <label for="sex">性别</label>
+        <select name="sex" id="sex">
+            <option value="1" selected="selected">male</option>
+            <option value="0">female</option>
+        </select>
+        <label for="mark">备注</label>
+        <textarea name="mark" id="mark" cols="30" rows="10"></textarea>
+    </body>
+</html>

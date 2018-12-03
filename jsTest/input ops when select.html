@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh_CN"> 
+<title>下拉框的选中值自动添加到文本框</title> 
+<meta charset="utf-8">
+<head> 
+</head> 
+<body> 
+<form name="form1"> 
+<select name="menu1" onChange="document.form1.get.value=this.options[this.selectedIndex].value"> 
+<option selected>请选择</option> 
+<option value="百度">百度</option> 
+<option value="网易">网易</option> 
+<input type="text" value="" name="get" id="get"> 
+</form> 
+
+
+<span style="margin-left:100px;width:18px;overflow:hidden;">
+<select style="width:118px;margin-left:-100px" onchange="this.parentNode.nextSibling.value=this.value">
+	<option value="天蓝蓝">天蓝蓝</option>
+	<option value="草绿绿">草绿绿</option>
+	<option value="水清清">水清清</option>
+</select>
+</span><input name="box" style="width:100px;position:absolute;left:0px;">
+</body> 
+</html>

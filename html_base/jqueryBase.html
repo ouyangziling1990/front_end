@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>conclusion the normal operate of jquery</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../static/css/scroll.css">
+    <link rel="stylesheet" href="../static/css/zilingUtil.css">
+    <style>
+        table{
+            margin-top: 10px;
+            width: 80%;
+        }
+        /*target*/
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active  {
+            -webkit-box-shadow: 0 0 0 30px white inset;
+            /*transition: background-color 5000s ease-in-out 0s !important;*/
+        }
+        input{}
+        
+    </style>
+</head>
+<body>
+    <div class='content'>
+        <h3>一 jquery的checkbox， radio， select操作总结</h3>
+        <h4>1. checkbox 日常操作</h4>
+        <div>
+            <input type="checkbox" id="firstbox" name='subbox' value=1 />选项1
+            <input type="checkbox" name='subbox' value=2 />选项2
+            <input type="checkbox" name='subbox' value=3 />选项3
+            <input type="checkbox" name='subbox' value=4 />选项4 
+            <br>
+            <button id="checkAll">全选</button>
+            <button id="checkno">全不选</button>
+            <button id='firstselect'>选择第一个</button>
+            <button id='secondselect'>选择第二个</button>
+            <button id='fourselect'>设置值为4的为选中状态</button>
+            <button id='selectedVal'>输出选中的值</button>
+        </div>
+        <h4>2. radio的jquery日常操作及属性</h4>
+        <input type="radio" name="radio" id="radio1" value="1" />1  
+        <input type="radio" name="radio" id="radio2" value="2" />2  
+        <input type="radio" name="radio" id="radio3" value="3" />3  
+        <input type="radio" name="radio" id="radio4" value="4" />4 
+        <br>
+        <button id="radio_first">选中第一项</button>
+        <button id="radio_second">输出选中的值</button>
+        <button id="radio_third">设置值为2的为选中</button>
+        <button id="radio_four">判断第四项是否为选中状态</button>
+        <button id="radio_five">取消选中</button>
+        <h4>3. select的jquery日常操作及属性</h4>
+        <select name="select" id="select_id" style="width: 100px;">  
+            <option value="1">1</option>  
+            <option value="2">2</option>  
+            <option value="3">3</option>  
+            <option value="4">4</option>  
+            <option value="5">5</option>  
+            <option value="6">6</option>  
+        </select> 
+        <button id="select_first">输出选中值</button>
+        
+        <button id="select_fiv">设置Select的Value值为5的项选中 </button>
+
+        <button id="select_sec">获取Select选中项的Text</button>
+        <button id="select_thi">获取Select选中项的索引值</button>
+        <button id="select_fou">新增一项</button>
+    </div>
+    <div class='content'>
+        <h3> 二 html常用事件</h3>
+        <li>有哪些原生dom事件，主要是干什么用
+            <a href="http://www.w3school.com.cn/tags/html_ref_eventattributes.asp">origin dom event</a>
+        </li>
+        <li>jquery的事件 <a href="https://www.jquery123.com/bind/">常用事件</a></li>
+        <li>jquery的bind on delegate等方式的区别
+            <a href="https://www.jquery123.com/bind/">bind介绍</a>
+        </li>
+       
+        <table>
+            <tr>
+                <th>事件名称</th>
+                <th>原生调用名称</th>
+                <th>jquery简用</th>
+            </tr>
+            <tr>
+                <td>点击事件</td>
+                <td>onclick</td>
+                <td><a href="https://www.jquery123.com/click">click</a></td>
+            </tr>
+            <tr>
+                <td>失去焦点</td>
+                <td>onblur</td>
+                <td><a href="https://www.jquery123.com/blur">blur</a></td>
+            </tr>
+        </table>
+        
+        <h4>keypress event</h4>
+        <label for="target">type for something</label>
+        <input type="text" id='target'>
+    </div>
+    <div class='content'>
+        <h3>三 js/jquery的宽高及相关应用（瀑布流的加载）</h3>
+        <h4>文档坐标是最直接的坐标，而视口坐标是相对坐标</h4>
+        <table>
+            <tr>
+                <th>名称</th>
+                <th>含义</th>
+                <th>名称</th>
+                <th>含义</th>
+            </tr>
+            <tr>
+                <td>文档坐标</td>
+                <td>document的左上角</td>
+                <td>视口坐标</td>
+                <td>浏览器窗口的左上角不包括browser的外壳（如菜单，工具条和标签页等）</td>
+            </tr>
+            <tr>
+                <td>window.innerHeight</td>
+                <td>视口高度</td>
+                <td>window.innerWidth</td>
+                <td>视口宽度</td>
+            </tr>
+            <tr>
+                <td>window.outerHeight</td>
+                <td>浏览器的高度</td>
+                <td>window.outerWidth</td>
+                <td>浏览器的宽度</td>
+            </tr>
+            <tr>
+                <td>获取dom元素的视口位置位置</td>
+                <td>e.getBoundingClientRect() -- 包含元素的内边距和边框 不包含外边距</td>
+                <td>获取dom元素的document位置</td>
+                <td>x: e.getBoundingClientRect().x + window.pageXOffset, y: e.getBoundingClientRect().y + window.pageYOffset</td>
+            </tr>
+            <tr>
+                <td>返回一个元素的宽度 box = e.getBoundingClientRect</td>
+                <td>box.width || (box.right -box.left)</td>
+                <td>返回一个元素的高度</td>
+                <td>box.height || (box.bottom = box.top)</td>
+            </tr>
+            <tr>
+                <td>滚动到指定位置</td>
+                <td>window.scrollTo(x, y)</td>
+                <td>scrollBy(0, 10)</td>
+                <td>调用一次则向下滚动10px</td>
+            </tr>
+            <tr>
+                <td>将元素展示在视口中</td>
+                <td>e.scrollIntoView()</td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    client和scroll属性，html元素的实际内容可能比分配用来容纳内容的盒子更大，
+                    因此打个元素可能有滚动条
+                </td>
+                <td colspan="4">
+                    clientWidth,clientHeight只包含内容和内边距；
+                    offsetWidth和offsetHeight 多了外边距,
+                </td>
+            </tr>
+            <tr>
+                <td>offsetWidth</td>
+                <td>clientWidth</td>
+                <td>scrollWidth</td>
+            </tr>
+            <tr>
+                <td>offsetHeight</td>
+                <td>clientHeight</td>
+                <td>scrollHeight</td>
+            </tr>
+            <tr>
+                <td>offsetLeft</td>
+                <td>clientLeft</td>
+                <td>scrollLeft</td>
+            </tr>
+            
+            <tr>
+                <td>offsetTop</td>
+                <td>clientTop</td>
+                <td>scrollTop</td>
+            </tr>
+            <tr>
+                <td>offsetParent</td>
+            </tr>
+        </table>
+    </div>
+    <script src="../static/Include/jquery-1.9.1.min.js"></script>
+    <script src="../static/js/zilingUtil.js"></script>
+    <script src="../static/js/jquery_operate.js"></script>
+</body>
+</html>

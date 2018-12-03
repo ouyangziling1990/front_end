@@ -1,0 +1,12 @@
+<html>
+    <head></head>
+    <body>
+        <iframe id="iframe_test" src="https://www.baidu.com" frameborder="0"></iframe>
+    </body>
+    <script>
+        document.getElementById('iframe_test').onload = function(){
+            var hashn = this.contentWindow.location.pathname;
+            console.log(hashn)
+        }
+    </script>
+</html>

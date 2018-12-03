@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<title>js animation huanchong </title>
+	<meta charset="utf-8">
+
+	<style type="text/css">
+	*{
+		padding:0;
+		margin:0;
+	}
+		#div1{
+			width:200px;
+			height:200px;
+			background-color: red;
+			position: relative;
+			left:-200px;
+			top:0;
+		}
+		#share{
+			width:50px;
+			height: 50px;
+			background-color: blue;
+			position:absolute;
+			left:200px;
+			top:75px;
+		}
+	</style>
+</head>
+<body>
+<div id="div1">
+	<span id="share">share</span>
+</div>
+<script>
+/*
+*  区分 style.left 和 offsetLeft的区别。
+   带有单位，另一个没有带单位。
+*/ 
+	window.onload = function(){
+		var oDiv = document.getElementById("div1");
+		oDiv.onmouseover = function(){
+			startMove(0);
+		}
+		oDiv.onmouseout =function () {
+			startMove(-200);
+		}
+	}
+	var timer = null;
+	function startMove(target){
+		clearInterval(timer);
+		var oDiv = document.getElementById("div1");
+		timer = setInterval(function(){
+			var speed = (target - oDiv.offsetLeft)/10;
+			speed = speed > 0 ? Math.ceil(speed): Math.floor(speed); 
+			// if(oDiv.offsetLeft > target){
+			// 	speed = -1;	
+			// }else {
+			// 	speed = 1;
+			// }
+			if(oDiv.offsetLeft == target){
+				clearInterval(timer);
+			}else 
+			oDiv.style.left = oDiv.offsetLeft + speed +'px';
+		},60);
+	}
+</script>
+</body>
+</html> 

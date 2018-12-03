@@ -1,0 +1,29 @@
+body{
+    margin:0px 40px;
+}
+.bg_header_1{
+    width:100%;
+    height:40px;
+    background:url(../images/titleMid.png) repeat-x top;
+    background-color:#002c40;
+}
+.bg_header_2{
+    position:relative;
+    width:100%;
+    height:100%;
+    background:url(../images/titleleft.png) no-repeat left top;
+}
+.bg_header_3{
+    width:100%;
+    height:100%;
+    background:url(../images/titleRight.png) no-repeat right top;
+    padding-left:20px;
+    box-sizing:border-box;
+    color:#83CCE4;
+    font-size:16px;
+    font-weight: 600;
+    line-height:40px;
+}
+#name{
+    color:#FFFFFF;
+}

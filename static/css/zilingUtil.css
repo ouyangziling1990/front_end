@@ -1,0 +1,16 @@
+/*溢出字段设置，这个在表现中很重要*/
+.no_overflow{
+    white-space: nowrap;
+    max-width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*chrome remove autocomplete yellow background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset; /*使用大块白色作底*/
+    transition: background-color 1s ease-in-out 1s /*这个*/;
+}

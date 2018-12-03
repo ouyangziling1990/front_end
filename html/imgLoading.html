@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>Image onload()</title>
+</head>
+<body>
+
+<img src="#" alt="This image is going to load" id="sologo"/>
+
+<script type="text/javascript">
+window.onload = function () {
+
+    var logo = document.getElementById('sologo');
+    logo.src = 'http://img.adkalava.com/img006/920/b9b3d668ce5af908.jpg';
+    logo.onload = function () {
+        alert ("The image has loaded!");
+    };
+    logo.onerror = function(){
+        alert('error');
+    }
+
+    // setTimeout(function(){
+                 
+    // }, 5000);
+};
+</script>
+</body>
+</html>
