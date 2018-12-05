@@ -80,14 +80,25 @@
         <h3>jquery pulgin撰写的方法和过程</h3>
         <button id='button'>点击测试</button>
         <br>
+        <h4>两种方式的不同，一般方式采用函数的形式，jquery plugin方式是封装在jquery插件中，可扩展性好些</h4>
         <h4>采用一般方式写出的天气轮播过程</h4>
         <div class='other_city_weather'>
             <div id='other_city_continer'></div>
         </div>
+        
         <h4>采用jquery UI方式写出的天气轮播过程</h4>
         <div class='other_city_weather'>
             <div id='scroll_weather'></div>
         </div>
+
+        <h4>
+            <li>有哪些是需要采用jquery pulgin方式编写的？</li>
+            <li>
+              当前的pulgin呈现方式主要是一个个功能模块，引入该插件需要引入插件的js和插件的css，再是操作，是比较传统的js工作模式。</li>
+            <li>vue 的一个模块也许有更好的封装模式</li>
+
+        </h4>
+
     </div>
     <script src="../static/Include/jquery-1.9.1.min.js"></script>
     <script src="../static/js/zilingUtil.js"></script>
