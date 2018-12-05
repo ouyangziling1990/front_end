@@ -64,7 +64,30 @@
 
         （4）一条transition规则，只能定义一个属性的变化，不能涉及多个属性。<br>
         </div>
+        <h2>第二部分： CSS animation</h2>
+        <li>2.1 基本用法</li>
+        <p>首先，CSS Animation需要指定动画的一个周期持续时间，以及动画效果名称</p>
+        <div id='animation1'></div>
+        <li>2.2 基本属性</li>
+        <textarea name="" id="" cols="60" rows="4">
+            div:hover {
+              animation: 1s 1s rainbow linear 3 forwards normal;
+            }
+        </textarea>
+        <textarea name="" id="" cols="60" rows="10">
+            div:hover {
+              animation-name: rainbow;
+              animation-duration: 1s;
+              animation-timing-function: linear;
+              animation-delay: 1s;
+              animation-fill-mode:forwards;
+              animation-direction: normal;
+              animation-iteration-count: 3;
+            }
+        </textarea>
+        <h1>typing animation by lea Verou</h1>
     </div>
+
     <div class='content'>
         引用1：<a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html">css animation 阮一峰</a>
     </div>
