@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery plugin self</title>
+    <link rel="stylesheet" href="../static/css/scroll.css">
+    <link rel="stylesheet" href="../static/css/zilingUtil.css">
+    <style>
+    p{
+        margin:0px;
+    }
+        .other_city_weather {
+            right: 20px;
+            margin: 16px 46px 0px 0px;
+            width: 132px;
+            height: 64px;
+            color: #ffffff;
+            font-family: SimHei;
+            font-size: 13px;
+            overflow: hidden;
+            border: 1px solid green;
+            color:black;
+        }
+        #other_city_continer {
+            position: relative;
+        }
+        .other_city_weather p {
+            margin-top: 4px;
+        }
+        .weather_not_act{
+            opacity:0.7;
+            margin-left:8px;
+            height:15px;
+            animation:weather_not_act;
+            -webkit-animation: weather_not_act 1s;
+            -moz-animation: weather_not_act 1s;
+            -ms-animation: weather_not_act 1s;
+            -o-animation: weather_not_act 1s;
+            animation-timing-function: ease-in-out;
+        }
+        @keyframes weather_not_act{
+            0%{
+                margin-left:0px;
+                font-size:16px;
+                opacity:1;
+            }
+            100%{
+                margin-left:8px;
+                font-size:13px;
+                opacity:0.7;
+            }
+        }
+        .weather_act{
+            font-size:16px;
+            height:22px;
+            line-height:22px;
+            animation:weather_act;
+            -webkit-animation: weather_act 1s;
+            -moz-animation: weather_act 1s;
+            -ms-animation: weather_act 1s;
+            -o-animation: weather_act 1s;
+            animation-timing-function: ease-in-out;
+        }
+        @keyframes weather_act{
+            0%{
+                margin-left:8px;
+                font-size:13px;
+                opacity:0.7;
+            }
+            100%{
+                margin-left:0px;
+                font-size:16px;
+                opacity:1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class='content'>
+        <h3>jquery pulgin撰写的方法和过程</h3>
+        <button id='button'>点击测试</button>
+        <br>
+        <h4>采用一般方式写出的天气轮播过程</h4>
+        <div class='other_city_weather'>
+            <div id='other_city_continer'></div>
+        </div>
+        <h4>采用jquery UI方式写出的天气轮播过程</h4>
+        <div class='other_city_weather'>
+            <div id='scroll_weather'></div>
+        </div>
+    </div>
+    <script src="../static/Include/jquery-1.9.1.min.js"></script>
+    <script src="../static/js/zilingUtil.js"></script>
+    <script src="../static/js/jquery_self_plugin.js"></script>
+</body>
+</html>
