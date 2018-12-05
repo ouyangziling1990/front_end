@@ -1,5 +1,7 @@
 ## front_end
 
+- use chrome 68.0.3440.106 for test
+
 ### 1 html_base folder
 
 - echartConclusion -- the normal operation of echart 
