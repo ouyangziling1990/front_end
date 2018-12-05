@@ -1,0 +1,21 @@
+#img1{
+    width: 20px;
+    height: 20px;
+}
+
+#img1:hover{
+    height: 300px;
+    width: 300px;
+}
+#img2{
+    width: 20px;
+    height: 20px;
+}
+
+#img2:hover{
+    height: 300px;
+    width: 300px;
+}
+#img2{
+    transition: all 1s 0s ease;
+}
