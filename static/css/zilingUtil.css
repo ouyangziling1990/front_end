@@ -1,8 +1,8 @@
 /*溢出字段设置，这个在表现中很重要*/
 .no_overflow{
     white-space: nowrap;
-    max-width: 60px;
-    overflow: hidden;
+    /*max-width 根据实际内容设定*/
+    max-width: 100%;
     text-overflow: ellipsis;
 }
 
