@@ -10,13 +10,27 @@
             width:100%;
             height:200px;
         }
+        #bar_chart, #pie_chart{
+            width: 100%;
+            height: 300px;
+        }
         html{
             background-color:#002c40;
             color: #83cce4;
         }
+
+        a{
+            color: #83cce4;
+            text-decoration: none;
+        }
         .content1{
             width: 60%;
             margin:20px auto;
+        }
+        .segmentation {
+            border-top: 1px dashed #00a0e9;
+            margin: 10px 0%;
+            width: 98%;
         }
     </style>
 </head>
@@ -34,9 +48,14 @@
             <ul>标准7： echart的宽、高随浏览器适配而调整，并且随时显示出适配后的宽高（参见js部分onsize 代码部分）</ul>
             <ul>标准8： 折线图动态效果随应用场景自行设置</ul>
         </div>
-        <hr>
+        <div class="segmentation"></div>
         <h3>二： echart柱状图</h3>
+        <div id='bar_chart'></div>
+        <div class="segmentation"></div>
+        <h3>三： 饼状图</h3>
+        <div id='pie_chart'></div>
         <p>to be containued</p>
+        <a href="http://www.echartsjs.com/gallery/editor.html?c=multiple-y-axis">多个柱状图的显示</a>
     </div>
     <script src="../static/Include/jquery-1.9.1.min.js"></script>
     <script src="../static/js/zilingUtil.js"></script>
@@ -45,14 +64,26 @@
     <script>
         jQuery(function($){
             var line_chart = echarts.init(document.getElementById('line_chart'))
+            var history_chart_container = echarts.init(document.getElementById('bar_chart'))
+            var pie_chart = echarts.init(document.getElementById('pie_chart'))
             window.onresize = throttle(resize);
             function resize(){
                 line_chart.resize()
+                history_chart_container.resize()
+                pie_chart.resize()
             }
+            setPie()
             setChart()
+            set_history_move_chart(['铁路出站', '地铁', '公交', '出租车', '社会停车场'], [10.0, 7.2, 4.3, 2.1, 0.9])
             function setChart(){
-                
+                var yarr = [120, 200, 150, 80, 70, 110, 130]
+                var xarr = ['10:01', '10:02', '10:03', '10:04', '10:05', '10:06', '10:07']
+                for(var i = 0; i<55; i++) {
+                    yarr.push(10*i)
+                    xarr.push('10.08')
+                }
                 var option = {
+
                     yAxis: [
                         {
                             type: 'value',
@@ -97,9 +128,7 @@
                             name: "分",
                             type: 'category',
                             boundaryGap: false,
-                            axisLabel: {
-                            },
-                            data: ['10:01', '10:02', '10:03', '10:04', '10:05', '10:06', '10:07'],
+                            data: xarr,
                             axisTick: {
                                 show: true,
                             },
@@ -109,7 +138,7 @@
                                 },
                                 symbol: ['none', 'arrow'],
                                 symbolSize: [8, 12],
-                                symbolOffset: [0, 12]
+                                symbolOffset: [0, 10]
                             },
 
                         }
@@ -119,13 +148,20 @@
                         right: '40',
                         bottom: '20',
                         containLabel: true
-                        // containLabel: true
                     },
                     series: [{
-                        data: [120, 200, 150, 80, 70, 110, 130],
+                        data: yarr,
                         type: 'line',
-                        name: '口岸珠港1F候车大厅'
-                    }],
+                        name: '口岸珠港1F候车大厅',
+                        animationEasing: 'elasticOut',
+                        animationDelay: function (idx) {
+                            return idx * 100;
+                        }
+                    },{
+                        data: yarr,
+                        type: 'line',
+                        name: '口岸珠港1F候车大厅1',
+                    },],
                     legend: {
                         data: ['口岸珠港1F候车大厅'],
                         textStyle: {
@@ -141,10 +177,232 @@
                         },
                     }
                 }
-                line_chart.clear();
-                line_chart.setOption(option, true);
+                line_chart.clear()
+                line_chart.setOption(option, true)
             }
-            
+            function set_history_move_chart(xArr, yArr) {
+                var option = {
+                    title: {
+                        text: "客流量（万）",
+                        // bottom: -7,
+                        // left:'center',
+                        textStyle: {
+                            fontWeight: 'normal',              //标题颜色
+                            color: 'white',
+                            fontSize: 12
+                        }
+                    },
+                    barMaxWidth: 25,
+                    legend: {
+                        data: ['人数'],
+                        textStyle: {         //标题颜色
+                            color: '#3398db',
+                            fontSize: 15
+                        }
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        formatter: function (param) {
+                            var res = ""
+                            var bgcolor = param[0]['color']['colorStops'][1]['color'];
+                            res += param[0].axisValue + "<br>"
+                            res += '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' + bgcolor + '"></span>'
+                            res += param[0].value + "万"
+                            return res;
+                        }
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: xArr,
+                        axisLabel: {
+                            textStyle: {
+                                color: 'white'
+                            }
+                        },
+                        axisLabel: {
+                            interval: 0,
+                            rotate: 10,
+                            align: 'center',
+                            margin: 15
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: 'white'
+                            },
+                            symbol: ['none', 'arrow'],
+                            symbolSize: [8, 12],
+                            symbolOffset: [0, 10]
+                        },
+                    },
+                    yAxis: {
+
+                        axisTick: {
+                            show: true
+                        },
+                        axisLabel: {
+                            textStyle: {
+                                color: 'white'
+                            },
+                            formatter: '{value} '
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: 'white'
+                            },
+                            symbol: ['none', 'arrow'],
+                            symbolSize: [8, 12],
+                            symbolOffset: [0, 10]
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: ['#00b3ea'],
+                                type: 'dotted',
+                                opacity: 0.4
+                            }
+                        },
+                        splitNumber: 4
+                    },
+                    grid: {
+                        x: 40, //默认是80px
+                        y: 35, //默认是60px
+                        x2: 20, //默认80px
+                        y2: 30 //默认60px
+                    },
+
+                    series: [
+                        {
+                            itemStyle: {
+                                normal: {
+                                    color: function (params) {
+                                        var colorList = [
+                                            new echarts.graphic.LinearGradient(
+                                                0, 0, 0, 1,
+                                                [
+                                                    {offset: 1, color: '#007fd0'},
+                                                    {offset: 0, color: '#1bffe6'}
+                                                ]
+                                            ),
+                                            new echarts.graphic.LinearGradient(
+                                                0, 0, 0, 1,
+                                                [
+                                                    {offset: 1, color: '#cb0851'},
+                                                    {offset: 0, color: '#fc7cb5'}
+                                                ]
+                                            ),
+                                            new echarts.graphic.LinearGradient(
+                                                0, 0, 0, 1,
+                                                [
+                                                    {offset: 1, color: '#ffc27a'},
+                                                    {offset: 0, color: '#fffacc'}
+                                                ]
+                                            ),
+                                            new echarts.graphic.LinearGradient(
+                                                0, 0, 0, 1,
+                                                [
+                                                    {offset: 1, color: '#7eb550'},
+                                                    {offset: 0, color: '#e5ffc9'}
+                                                ]
+                                            ),
+                                            new echarts.graphic.LinearGradient(
+                                                0, 0, 0, 1,
+                                                [
+                                                    {offset: 1, color: '#007fd0'},
+                                                    {offset: 0, color: '#1bffe6'}
+                                                ]
+                                            ),
+                                            new echarts.graphic.LinearGradient(
+                                                0, 0, 0, 1,
+                                                [
+                                                    {offset: 1, color: '#cb0851'},
+                                                    {offset: 0, color: '#fc7cb5'}
+                                                ]
+                                            ),
+                                        ]
+                                        return colorList[params.dataIndex]
+                                    }
+                                },
+                            },
+                            type: 'bar',
+                            data: yArr,
+                            barWidth: 30,
+                            animationDelay: function (idx) {
+                                return idx * 150;
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'white'
+                                    }
+                                }
+                            },
+                        }
+                    ]
+                };
+                history_chart_container.clear()
+                history_chart_container.setOption(option, true)
+            }
+            function setPie(){
+                option = {
+                    title : {
+                        text: '某站点用户访问来源',
+                        subtext: '纯属虚构',
+                        x:'center',
+                        textStyle: {
+                            fontWeight: 'normal',              //标题颜色
+                            color: 'white',
+                            fontSize: 12
+                        }
+                    },
+                    tooltip : {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)",
+                        textStyle: {
+                            fontWeight: 'normal',              //标题颜色
+                            color: 'white',
+                            fontSize: 12
+                        }
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        left: 'left',
+                        data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎'],
+                        textStyle: {
+                            fontWeight: 'normal',              //标题颜色
+                            color: 'white',
+                            fontSize: 12
+                        }
+                    },
+                    series : [
+                        {
+                            name: '访问来源',
+                            type: 'pie',
+                            radius : '55%',
+                            center: ['50%', '60%'],
+                            data:[
+                                {value:335, name:'直接访问'},
+                                {value:310, name:'邮件营销'},
+                                {value:234, name:'联盟广告'},
+                                {value:135, name:'视频广告'},
+                                {value:1548, name:'搜索引擎'}
+                            ],
+                            itemStyle: {
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+                pie_chart.clear()
+                pie_chart.setOption(option, true)
+            }
         })
     </script>
 </body>
