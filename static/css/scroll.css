@@ -23,7 +23,7 @@
     font-weight: bold;
 }
 .content{
-    width:1000px;
+    min-width:1000px;
     height:100%;
     margin:20px auto;
 }

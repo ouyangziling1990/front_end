@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>echart 展示定制标准</title>
+    <link rel="shortcut icon" href="../static/images/today_pass.png" type="image/x-icon">
+    <!-- <link type='text/css' rel="stylesheet" href="../static/css/scroll.css" /> -->
+    <style>
+        #line_chart{
+            width:100%;
+            height:200px;
+        }
+        html{
+            background-color:#002c40;
+            color: #83cce4;
+        }
+        .content1{
+            width: 60%;
+            margin:20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class='content1'>
+        <h3>echart 折线图</h3>
+        <div id='line_chart'></div>
+        <div>
+            <ul>标准1： 箭头超出轴线，并指明x轴的单位</ul>
+            <ul>标准2： 折线图标题</ul>
+            <ul>标准3： x轴刻度与刻度线对其</ul>
+            <ul>标准4： y轴顶部需显示名称及其单位</ul>
+            <ul>标准5： y轴刻度虚线 （dotted， 参见js代码部分）</ul>
+            <ul>标准6： x轴刻度如果是时间类型，则显示全部的，如按照小时的10点显示为10:00 而不是10 （根据echart长度确定</ul>
+            <ul>标准7： echart的宽、高随浏览器适配而调整，并且随时显示出适配后的宽高（参见js部分onsize 代码部分）</ul>
+            <ul>标准8： 折线图动态效果随应用场景自行设置</ul>
+        </div>
+        <br>
+        <h3>echart柱状图</h3>
+        <p>to be containued</p>
+    </div>
+    <script src="../static/Include/jquery-1.9.1.min.js"></script>
+    <script src="../static/js/zilingUtil.js"></script>
+    <script src="../static/Include/echarts.min.js"></script>
+
+    <script>
+        jQuery(function($){
+            var line_chart = echarts.init(document.getElementById('line_chart'))
+            window.onresize = throttle(resize);
+            function resize(){
+                line_chart.resize()
+            }
+            setChart()
+            function setChart(){
+                
+                var option = {
+                    yAxis: [
+                        {
+                            type: 'value',
+                            name: '客流量（人）',
+                            axisTick: {
+                                show: true,
+                            },
+                            minInterval: 1,
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#fff',
+                                    width: 1
+                                },
+                                symbol: ['none', 'arrow'],
+                                symbolSize: [8, 12],
+                                symbolOffset: 10
+                            },
+                            splitLine: {
+                                lineStyle: {
+                                    color: ['#00b3ea'],
+                                    type: 'dotted',
+                                    opacity: 0.4
+                                }
+                            }
+                        }
+                    ],
+                    title: {
+                        bottom: -5,
+                        left:'center',
+                        text: '实时客流量',
+                        textStyle:{
+                            fontWeight: 'normal',              //标题颜色
+                            color: 'whitesmoke',
+                            fontSize:15
+                        }
+                    },
+                    color: [
+                        '#3498db', '#f1c40f', '#1abc9c', '#8e44ad', '#e67e22', '#e74c3c', '#C4E538', '#D980FA'
+                    ],
+                    xAxis: [
+                        {
+                            name: "分",
+                            type: 'category',
+                            boundaryGap: false,
+                            axisLabel: {
+                            },
+                            data: ['10:01', '10:02', '10:03', '10:04', '10:05', '10:06', '10:07'],
+                            axisTick: {
+                                show: true,
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#fff',
+                                },
+                                symbol: ['none', 'arrow'],
+                                symbolSize: [8, 12],
+                                symbolOffset: [0, 12]
+                            },
+
+                        }
+                    ],
+                    grid: {
+                        left: '15',
+                        right: '40',
+                        bottom: '20',
+                        containLabel: true
+                        // containLabel: true
+                    },
+                    series: [{
+                        data: [120, 200, 150, 80, 70, 110, 130],
+                        type: 'line',
+                        name: '口岸珠港1F候车大厅'
+                    }],
+                    legend: {
+                        data: ['口岸珠港1F候车大厅'],
+                        textStyle: {
+                            fontWeight: 'normal',              //标题颜色
+                            color: 'whitesmoke'
+                        }
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        textStyle: {
+                            fontWeight: 'normal',              //标题颜色
+                            color: 'whitesmoke'
+                        },
+                    }
+                }
+                line_chart.clear();
+                line_chart.setOption(option, true);
+            }
+            
+        })
+    </script>
+</body>
+
+</html>
