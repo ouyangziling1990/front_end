@@ -4,12 +4,123 @@
     <meta charset="UTF-8">
     <title>js中的面向过程编程</title>
     <link rel="stylesheet" href="../static/css/scroll.css">
+    <style>
+        li{
+
+        }
+        img{
+            width: 1000px;
+        }
+    </style>
 </head>
 <body>
     <div class='content'>
-        <h3>前端编程中面向过程的一种代码组织方式</h3>
+        <h3>前端编程中面向过程的代码组织方式</h3>
+        <ol>
+            <li>当前在云识图中使用的代码组织方式</li>
+            <li>前端代码组织方式的四种境界</li>
+            <li>从境界1 到 进阶2的一个代码分析</li>
+            <li>底部是当前云识图页面展示的两个页面： 北京西站车辆系统首页 和 北京大数据平台首页</li>
+        </ol>
+        
         <div class=''>
-            
+            <h4>1. 当前在云识图中使用的代码组织方式</h4>
+            <ul type='square'>
+                <li>根据页面的操作来看，该设计页面设计呈现模块化</li>
+                <li>每个模块需要几个操作，1. 模块初始化 2. 获取数据并进行组织 3. interval 定时刷新数据。</li>
+                <li>代码组织方式 -- 根据每个模块的内容，进行渲染，并增加内容。</li>
+                <pre>
+    jQuery(function($){
+        var globalparam1, globalparam2, globalparam3;
+        model_fun1(params)//第一次调用
+        //定时调用数据
+        setInterval(function(){
+            model_fun1(params)
+        }, interval_sope)
+        function model_fun1(params){
+            getData(){
+                $.ajax(function(){
+                    url:'',
+                    data:{},
+                    type:'GET',
+                    success:function(data){
+                        var code = data.code;
+                        -- buiness logical
+                    }
+                })
+            }
+            set_chart(obj, xarr, yarr){
+                var option = {
+
+                }
+                obj.clear()
+                obj.setOption(option, true)
+            }
+        }
+    })
+                </pre>
+            </ul>
+        </div>
+        <div>
+            <h4>前端代码组织方式的四种境界</h4>
+            <ol>
+                <li>基础-函数版</li>
+                <pre>
+    function a(){}
+    function b(){}
+                </pre>
+                <li>入门-字面量版</li>
+                <pre>
+    var obj = {
+        init:function(){
+            this.a()
+            this.b()
+        },
+        a:function(){},
+        b:function(){}
+    }
+                </pre>
+                <li>进阶</li>
+                <pre>
+    var hogo = {
+        ns : function(){};
+    }
+
+    hogo.ns('hogo.wx', {
+        init : function(){
+            this.a();
+            this.b();
+        },
+        a : function(){},
+        b : function(){}
+    });
+    hogo.wx.init();
+                </pre>
+                <li>提高 -  模块化版</li>
+                <pre>
+    define();
+    require();
+                </pre>
+            </ol>
+        </div>
+        <div>
+            <h4>从境界1 到 进阶2的一个代码分析</h4>
+            <ul>
+                <li>
+                    <a href="./opp_ana1.html" target='_blank'>案例源代码</a>
+                </li>
+                <li>
+                    <a href="./opp_ana1.html" target='_blank'>案例优化代码</a>
+                </li>
+                <li>
+                    <a href="https://www.cnblogs.com/libin-1/p/6706451.html" target='_blank'>案例总结</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h4>4. 具有代表性的图片</h4>
+            <img src="../static/images/beijing_west_railway_station_index.png" alt="北京西站车辆系统" title='北京西站车辆系统首页'>
+            <img src="" alt="北京大数据平台" title='北京大数据平台首页'>
         </div>
     </div>
     

@@ -188,3 +188,8 @@ function throttle(fn,interval){
         }
     }
 }
+
+//返回对象的类
+function classof(O){
+    return Object.prototype.toString.call(O).slice(8, -1)
+}

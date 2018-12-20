@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+ <html>
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>多选框问题</title>
+ </head>
+ 
+ <body>
+     <!--<input type="text" data-bind-content="name" />
+         <span data-bind-content='name'></span>-->
+ 
+     <h4>选择区</h4>
+     <div>
+         
+         <ul id="ul1">
+             <li>全选<input type="checkbox" name="checkall" /></li>
+             <li><input type="checkbox" name="checkthis" /><span>1</span></li>
+             <li><input type="checkbox" name="checkthis" /><span>2</span></li>
+             <li><input type="checkbox" name="checkthis" /><span>3</span></li>
+             <li><input type="checkbox" name="checkthis" /><span>4</span></li>
+             <li><input type="checkbox" name="checkthis" /><span>5</span></li>
+         </ul>
+     </div>
+     
+     <button id="add">添加</button>
+     <h4>展示区</h4>
+     <ul id="ul2"></ul>
+ </body>
+ <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+ <script type="text/javascript">
+     //封装
+     var checkBox = (function () {
+         var globalV = [];
+         var yourChose = function (tableId, addClickId, showId) {
+             console.log($('#' + tableId + ' input[name=checkall]'));
+             //全选
+             $('#' + tableId + ' input[name=checkall]').click(function () {
+                 //如果选择全选, 所有的选择框都选中,去除全选,所有的选择框去除选中    
+                 if ($(this).prop('checked')) {
+                     $('#' + tableId + ' input[name=checkthis]').prop('checked', true);
+                     //全选的时候,将所有选框的数据取出来传给全局变量globalV
+                     $('#' + tableId + ' input[name=checkthis]').each(function (i, ele) {
+                         var choseDate = {};
+                         choseDate.isChecked = true;
+                         choseDate.id = $(ele).parent().children('span').html();
+                         globalV.push(choseDate);
+                     });
+                 } else {
+                     $('#' + tableId + ' input[name=checkthis]').prop('checked', false);
+                 }
+                 console.log(globalV);
+             })
+             //对各个选择框绑定事件
+             $('#' + tableId).on('change', 'input[name=checkthis]', function () {
+                 var arr = [];//存储每个选择框的状态
+                 var choseDate = {};//存储被选中的选择框的数据
+                 //<li><input type="checkbox" name="check-this" /><span>3</span></li>获取span里面的值
+                 var this_value = $(this).parent().children('span').html();
+                 //遍历每个选择框取选择的状态
+                 $('#' + tableId + ' input[name=checkthis]').each(function (i, ele) {
+                     arr.push($(ele).prop('checked'));
+                 });
+                 //如果有未选中的状态,去除全选框的选中状态,否则保留添加全选框的的选中状态
+                 if (arr.indexOf(false) == -1) {
+                     $('#' + tableId + ' input[name=checkall]').prop('checked', true);
+                 } else {
+                     $('#' + tableId + ' input[name=checkall]').prop('checked', false);
+                 }
+                 //对应每个选择框的change事件,如果这个选择框选中,则存储这个选择框的数据,否则遍历存储数据的变量,移除这个取消选中的的选择框的数据
+                 if ($(this).is(':checked')) {
+                     choseDate.isChecked = true;
+                     choseDate.id = this_value;
+                     globalV.push(choseDate);
+                 } else {
+                     for (var i = 0; i < globalV.length; i++) {
+                         if (this_value == globalV[i].id) {
+                             globalV.splice(i, 1);
+                         }
+                     }
+                 }
+                 console.log(globalV);
+             });
+             //点击添加按钮的事件
+             $('#'+addClickId).click(function (e) {
+                 e.preventDefault();
+                 $('#'+showId).empty();//清空展示区里面的内容
+                 console.log(globalV);
+                 //如果没有选中任何选择框,则弹出提示
+                 if (globalV.length == 0) {
+                     alert('请先选择!');
+                 } else {
+                     //如果选中了一些选择框,则全局变量数据不为空,开始遍历全局变量
+                     for (var j = 0; j < globalV.length; j++) {
+                         //按照全局变量globalV,给展示区创建元素;(包含了删除按钮)
+                         var liElement = '<li>\
+                                             <span>'+ globalV[j].id + '</span>\
+                                             <p style="display:inline-block;width:20px;height:20px;border-radius:50%;text-align:center">X</p>\
+                                         </li>';
+                         $('#'+showId).append(liElement);
+                     }
+                     //给删除按钮添加点击事件
+                     $('#'+showId).on('click', 'p', function () {
+                         //var findAndChangeState=$(this).parent('li').children('span').html();
+                         //找到这个删除按钮对应的父级标签li下面的span标签的内容;注意:这个是简化;就放在了标签里面,实际情况可能是个属性,获取的这个值对应一个选择框
+                         //由这个值来查找对应的选择框,从而改变选择框的状态;
+                         //这里是点击了删除按钮,那么与他对应的选择框的选中状态也会被去除
+                         var findAndChangeState = $(this).parent('li').children('span').html();
+                         //遍历选择框找到与删除按钮对应的选择框,将其状态改为未选中,同时将全选的选择框也改为未选中
+                         $('#' + tableId + ' input[name=checkthis]').each(function (i, ele) {
+                             if ($(this).parent().children('span').html() == findAndChangeState) {
+                                 $(this).parent().children('input').prop('checked', false);
+                                 $('#' + tableId + ' input[name=checkall]').prop('checked', false);
+                             }
+                         });
+                         //改完之后这个删除按钮对应的父级标签
+                         $(this).parent('li').remove();
+                     })
+                 }
+             })
+         };
+         return {
+             globalV:globalV,
+             yourChose:yourChose
+         }
+     })()
+     checkBox.yourChose('ul1', 'add', 'ul2')
+ </script>
+ 
+ </html>
