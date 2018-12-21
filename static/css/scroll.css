@@ -1,3 +1,35 @@
+body,
+ol,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+th,
+td,
+dl,
+dd,
+form,
+fieldset,
+legend,
+input,
+textarea,
+select {
+    margin: 0;
+    padding: 0
+}
+body {
+    font: 14px "微软雅黑", "Arial Narrow", HELVETICA;
+    background: #fff;
+    -webkit-text-size-adjust: 100%;
+    scrollbar-face-color: #003e59;
+    scrollbar-Shadow-color: #002c40;
+    scrollbar-track-color: #002c40;
+    scrollbar-arrow-color:#002c40;
+}
 #navigation a{
     display: inline-block;
     padding: 6px 12px;
@@ -22,6 +54,24 @@
     font-size:18px;
     font-weight: bold;
 }
+a {
+    color: #BF2315;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+a:hover {
+    color: #2cfcfc;
+    text-decoration: none
+}
+.outline{
+    margin-left:20px;
+}
+ol li a{
+    /*color: #1170C0;*/
+    font-size: 17px;
+}
+
 .content{
     width:1000px;
     height:100%;
@@ -32,7 +82,11 @@ header{
     font-size:30px;
 }
 .hr_dashed{
+    margin:20px 0px;
     border:1px dashed blue;
+}
+.block{
+    width: 50px;
 }
 .warning{
     width:230px;
@@ -76,14 +130,14 @@ header{
     z-index:3;
 }
 .right_icon{
-    background-image:url(../images/titleLeft.png);
+    background-image:url(../images/goright.png);
     background-position:center;
     background-repeat:no-repeat;
     cursor:pointer;
 }
 
 #img_center{
-    height:400px;
+    height:220px;
     width:400px;
     text-align:center;
     margin:10px;
@@ -112,7 +166,7 @@ header{
     border-width:5px 10px;
     width:480px;
     height:322px;
-    border-image: url("http://192.168.1.33:5555/static/Themes/Images/WestBig/left3_bg.png") 5 10;
+    border-image: url("../images/left3_bg.png") 5 10;
 }
 #css3{
     position:relative;

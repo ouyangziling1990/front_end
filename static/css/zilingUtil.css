@@ -4,6 +4,7 @@
     /*max-width 根据实际内容设定*/
     max-width: 100%;
     text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 /*chrome remove autocomplete yellow background */

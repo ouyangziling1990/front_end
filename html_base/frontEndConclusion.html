@@ -16,6 +16,22 @@
     
     <header>笨功夫总结前端知识点</header>
     <div class="content">
+        <div>
+            <h3>一： 页面提纲</h3>
+            <ol class='outline'>
+                <li><a href="#scroll">窗口滑动</a></li>
+                <li><a href="#img_center">图片居中</a></li>
+                <li><a href="#img_center">图片居中</a></li>
+                <li><a href="#triangle">border基本知识</a></li>
+                <li><a href="#line_time">渐变</a></li>
+                <li><a href="#background">background知识</a></li>
+                <li><a href="#table_learn">table</a></li>
+                <li><a href="#list">列表</a></li>
+                <li><a href="#draggable">拖拽的两种实现</a></li>
+            </ol>
+        </div>
+        
+        <hr class="hr_dashed"> 
         <div id="scroll">
             <h3>1. 窗口滑动范例： 两层div，里层的div相对于外层div滑动。
                 使用div的onmousewheel事件。
@@ -25,7 +41,7 @@
                 </div>
             </div>
             
-            <button id="partW"> add part warning</button>
+            <button id="partW">点击内层模块生成</button>
             
             <h3>水平滑动显示问题</h3>
             <div class="capter_warp">
@@ -38,7 +54,7 @@
         </div> <!-- scroll end -->
         <hr class="hr_dashed"> 
         <div id="pic_center">
-            <h3>图片居中</h3>
+            <h3>2. 图片居中</h3>
             <div id="img_center">
                 <span id="span_refer">
                     <img src="../static/images/text.jpg" alt="">
@@ -47,7 +63,7 @@
         </div>
         <hr class="hr_dashed">
         <div id="triangle">
-            <h3>3: border的基本知识</h3>
+            <h3>3. border的基本知识</h3>
 
             <table>
                 <tr>
@@ -67,8 +83,9 @@
             <div class="border_img">
             </div>
         </div>
+        <hr class="hr_dashed">
         <div id="css3">
-            <h3>4 css3 new property</h3>
+            <h3>4. css3 new property</h3>
             <div>
                 <li>背景动态变化 animation</li>    
                 <span id="line_time"></span><br>
@@ -93,18 +110,10 @@
             <div id="grandent4">
                 <span>ziling is the best</span>
             </div>
-
-            <div id="">
-                <li>transition</li>
-                <div id="transition"></div>
-            </div>
-            <br>
-            <div id="animation">
-                <div id="animation1"></div>
-            </div>
         </div>
+        <hr class="hr_dashed">
         <div id="background">
-            <h3>5 background 属性枚举</h3>
+            <h3>5. background 属性枚举</h3>
             <p>background params</p>
             <table>
                 <thead>
@@ -157,8 +166,9 @@
                 </tbody>
             </table>
         </div>
+        <hr class="hr_dashed">
         <div id="table_learn">
-            <h3>table的基本属性和设置</h3>
+            <h3>6. table的基本属性和设置</h3>
             <p>设置tr之间显露背景的设置</p>
             <table id="table">
                 <thead>
@@ -169,6 +179,7 @@
                 </tbody>
             </table>
         </div>
+        <hr class="hr_dashed">
         <div id="list">
             <h3>5 列表的基本设置</h3>
             <ol class="normal">
@@ -181,8 +192,9 @@
                 <li>best</li>
             </ul>
         </div>
+        <hr class="hr_dashed">
         <div id="select_set">
-            <h3>select选项设置</h3>
+            <h3>6 select选项设置</h3>
             <select id="ziling_love">
                 <option value="0">beyond</option>
                 <option value="1">sunshine</option>
@@ -195,38 +207,41 @@
                 <option value="2">sichuan</option>
             </select>
         </div>
+         <hr class="hr_dashed">
         <div>
-            <h3>6新文本属性，在页面展示中这个是容易发生纰漏的地方</h3>
+            <h3>7. 新文本属性，超出区域后显示...</h3>
             <div>
                 <span>对于规定了展示的宽度之后，用white-space或者text-overflow这两个属性来进行内容的调整。</span><br>
-                <p class="no_overflow">ziling is the bestera</p>
+                <div class='block'>
+                    <p class="no_overflow">ziling is the bestera</p>
+                </div>
             </div>
         </div>
-        <div>
-            <h3>7 </h3>
-        </div>
+        
     </div>
 
     <div class="content">
         <div>
-            <h2>8 css 简单分页</h2>
+            <h2>8. css 简单分页</h2>
             <a href="http://www.runoob.com/css3/css3-pagination.html#">简单分页实践</a>
         </div>
+        <hr class="hr_dashed">
         <div>
-            <h2>9 弹性盒子实践</h2>
+            <h2>9. 弹性盒子实践</h2>
         </div>
         <div class="base_js">
-            <h2>10 基本的JS事件添加和绑定，在Corsface系统中的绑定情况。</h2>
+            <h2>10. 基本的JS事件添加和绑定，在Corsface系统中的绑定情况。</h2>
 
         </div>
+        <hr class="hr_dashed">
         <div>
-            <h2>11 css 动态效果</h2>
+            <h2>11. css 动态效果</h2>
             <div class="base_knowledge">
                 <p>1. jquery 的animation</p>
                 <p>2. css的animation 基础知识</p>
 
             </div>
-            <h2>12 css 动态效果进阶</h2>
+            <h2>12. css 动态效果进阶</h2>
             <div>
                 <p>1.基本轮播图的实现,思考有哪些种方式</p>
                 <p>2.大数据平台的切换效果有哪些，看看能不能升级 <a href="http://192.168.1.33:5555/bigdata/solution3">西站大数据平台的动态效果</a></p>
@@ -240,9 +255,9 @@
     
             </div>
         </div>
-        
+        <hr class="hr_dashed">
         <div>
-            <h1>14 float知识相关总结</h1>
+            <h3>14. float知识相关总结</h3>
             <div id="float_container">
                 <div class="clearfix">
                     <img src="../static/images/right_icon3.png" alt="" class="left">
@@ -250,13 +265,22 @@
                 <div>子陵float测试问题</div>
             </div>
         </div>
-        <div>
-            <h1>15 js 拖拽事件效果的两种实现方式</h1>
-            <h2>draggable api实现方式</h2>
-            <h2>js计算实现方式</h2>
+        <hr class="hr_dashed">
+        <div id='draggable'>
+            <h3>15. js 拖拽事件效果的两种实现方式</h3>
+            <h4>（1）draggable api实现方式</h4>
+            <h4>（2）js计算实现方式</h4>
+            <a href="./drag.html">html拖拽实现方式</a>
         </div>
+        <hr class="hr_dashed">
         <div id='scroll_id'>
-            <h1>隐藏下拉滚动条的均试用方式</h1>
+            <h3>16. 隐藏下拉滚动条的均试用方式</h3>
+        </div>
+        <hr class="hr_dashed">
+        <div id='scroll_id'>
+            <h3>17. 基准线问题</h3>
+            <h4>例子</h4>
+            <h4>问题说明</h4>
         </div>
     </div>
     <script src="../static/Include/jquery-1.9.1.min.js"></script>
