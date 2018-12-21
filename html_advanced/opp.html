@@ -57,6 +57,15 @@
                 obj.setOption(option, true)
             }
         }
+
+        // 针对需要进行dom操作的内容，最好是将dom操作的地方统一集中的放置一起，这样比较便于控制。 例子见（车辆系统中排队车辆与下面排队详情的统一处理）
+        function model_fun2(){
+            updateData(param)
+        }
+        function model_fun3(){
+            updateData(param)
+        }
+        updateData(param){}
     })
                 </pre>
             </ul>
