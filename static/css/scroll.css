@@ -341,3 +341,27 @@ select::-ms-expand{
 .right{
     float:right;
 }
+
+.num {
+    display: inline-block;
+    font-family: MicrosoftYaHei;
+    font-size: 24px;
+    color: #D61586;
+    width: 31%;
+    /*vertical-align: top;*/
+}
+.num_wrap{
+    margin-top: 5px;
+    height: 37px;
+    line-height: 37px;
+    background-color:#35AB5B;
+}
+.num_split {
+    display: inline-block;
+    width: 2px;
+    height: 100%;
+    background-image: linear-gradient(0deg, 
+ #023976 0%, 
+ #04fff9 49%, 
+ #023d79 100%);
+}
