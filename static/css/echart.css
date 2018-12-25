@@ -1,7 +1,6 @@
 #autoEchart{
-    position: absolute;
     width: 50%;
-    height:20%;
+    height:200px;
 }
 .echart_content{
     position: absolute;
@@ -9,4 +8,21 @@
     right: 0;
     bottom: 0;
     top: 11px;
+}
+.main{
+    background-color: #72afd2;
+    box-sizing: border-box;
+}
+#pie{
+    height: 200px;
+    width: 200px;
+    border-radius: 114px;
+    border: 2px solid rebeccapurple;
+}
+#bottom{
+    height: 300px;
+}
+#radar{
+    height: 300px;
+    width: 300px;
 }
