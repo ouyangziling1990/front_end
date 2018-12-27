@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>进度条</title>
+    <style>
+        .circle {
+            width: 100px;
+            margin: 6px 6px 20px;
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            line-height: 1.2;
+        }
+        .circle strong {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>  
+    <div id='circle'>
+        <canvas width="100" height="100"></canvas>
+        <strong>100<i>%</i></strong>
+        <span>animation <br> progress</span>
+    </div>
+    <div class="second circle">
+        <canvas width="100" height="100"></canvas>
+        <strong>100<i>%</i></strong>
+        <span>animation <br> progress</span>
+    </div>
+    <script src="../static/Include/jquery-1.9.1.min.js"></script>
+    <script src="../static/Include/circle-progress.js"></script>
+    <script>
+        $('#circle').circleProgress({
+                value: 1,
+                size: 80,
+                fill: {
+                    gradient: ["red", "orange"]
+                }
+            });
+
+        $('.second.circle').circleProgress({
+            value: 0.6
+        }).on('circle-animation-progress', function(event, progress) {
+            $(this).find('strong').html(parseInt(100 * progress) + '<i>%</i>');
+        });
+    </script>
+</body>
+
+</html>

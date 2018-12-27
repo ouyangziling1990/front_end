@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../static/css/scroll.css">
-    <title>通过for语句生成多个interval</title>
+    <title>多个interval的生成办法</title>
+    <style>
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+    }
+    li{
+        font-size: 15px;
+    }
+    #timeoutShow{
+        font-size: 25px;
+        font-weight: bold;
+    }
+    </style>
 </head>
+
 <body>
+    <h2>setInterval, setTimeout的使用</h2>
     <div class='content'>
-        <h3>interval parameters</h3>
+        <h3>1.interval parameters</h3>
         <div>
             <li>采用闭包的方式，将数据传入到interval中</li>
             <li>示例声明清除该interval的方式</li>
             <li> var intv = setInterval(function({}), 300)</li>
             <li>typeof(intv) == 'numbers'</li>
         </div>
+        <hr class='hr_dashed'>
+        <h3>2.利用setTimeout代替setInterval防止页面卡顿的问题</h3>
+        <div>
+            <li>setTimeout：执行完成之后就结束了</li>
+            <li>setInterval：每隔一个时间段就执行一次之前的函数，不管之前的内容是否执行完毕。这就导致了有些函数执行慢会多次执行，页面卡顿</li>
+
+            <span id='timeoutShow'>0</span>
+        </div>
+        <hr class='hr_dashed'>
+        <h3>3. setTimeout 和 setInterval的异同</h3>
     </div>
-    
     <script src="../static/Include/jquery-1.9.1.min.js"></script>
     <script src="../static/js/mutilate_interval.js"></script>
 </body>
+
 </html>
