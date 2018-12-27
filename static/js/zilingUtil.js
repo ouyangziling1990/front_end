@@ -193,3 +193,18 @@ function throttle(fn,interval){
 function classof(O){
     return Object.prototype.toString.call(O).slice(8, -1)
 }
+// 用setTimeout代替setInterval
+function interval(func, w, t, params) {
+    var interv = function() {
+        if (typeof t === "undefined" || t-- > 0) {
+            setTimeout(interv, w);
+            try {
+                func.call(null, params)
+            } catch (e) {
+                t = 0;
+                throw e.toString();
+            }
+        }
+    }
+    return setTimeout(interv, w);
+}
