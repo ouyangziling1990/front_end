@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>切换效果及醒目显示准则</title>
+    <link rel="stylesheet" href="../static/css/highlight.css">
+</head>
+<body>
+    <div class="right_top">
+        <h3>北负一西出租车</h3>
+        <div class="right_top_content clearfix">
+            <div class="right_top_item">
+                <div class="right_top_item_icon go_cars"></div>
+                <div class="right_top_item_title">今日通行出租车</div>
+                <div class="right_top_item_num"><span  id="today_cnum">0</span> 辆</div>
+            </div>
+            <div class="right_top_item">
+                <div class="right_top_item_icon line_cars"></div>
+                <div class="right_top_item_title" >当前排队出租车</div>
+                <div class="right_top_item_num"> <span id="now_lnum">0</span> 辆</div>
+            </div>
+            <div class="right_top_item">
+                <div class="right_top_item_icon line_time" id="waiting_time"><span id="line_time"></span> </div>
+                <div class="right_top_item_title">出租车排队时间</div>
+                <div class="right_top_item_num"><span class="font_b_y" id="right1">0</span>分钟</div>
+            </div>
+        </div>
+        <div id="statistic_5"></div>
+    </div>
+    <script src="../static/Include/jquery-1.9.1.min.js"></script>
+    <script src='../static/js/highlight.js'></script>
+</body>
+</html>
