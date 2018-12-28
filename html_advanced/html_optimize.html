@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>html页面优化</title>
     <link rel="stylesheet" href="../static/css/scroll.css">
+    <link rel="stylesheet" href="../static/css/common.css">
     <style>
         h2 {
             text-align: center;
@@ -15,11 +16,35 @@
     </style>
 </head>
 <body>
-    <h2>html页面如何进行优化</h2>
+    <div class='content'>
+        <h2>html页面响应如何进行优化</h2>
 
-    <h3>基本概念</h3>
-    <li></li>
-    <h3>常用工具</h3>
-    <h3>参考文章</h3>
+        <h3>一. 基本概念</h3>
+        html页面的展示影响了用户观赏和使用，常见的优化方面
+        <ul>
+            <li>加载速度</li>
+            <li>页面卡顿</li>
+        </ul>
+        
+        <h3>二. 常用工具</h3>
+        <ol>
+            <li>chrome Timeline</li>
+        </ol>
+        <h3>三. 思考其中内容</h3>
+        <ol>
+            <li>对于图片的压缩中，应该采用脚本进行执行，每次打包之前需要把资源进行处理一次</li>
+        </ol>
+        <h3>四. 参考文章</h3>
+        <ol>
+            <li>
+                <a href="https://segmentfault.com/a/1190000005681230">页面卡顿排查</a>
+            </li>
+            <li>
+                <a href="https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool">Timeline工具使用</a>
+            </li>
+            <li><a href="https://www.kancloud.cn/kancloud/web_performance_optimization/80992">前端性能优化</a></li>
+        </ol>
+    </div>
+    
 </body>
 </html>
