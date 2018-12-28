@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>跨域资源共享</title>
+    <link rel="stylesheet" href="../static/css/scroll.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <style>
+    a {
+        margin: 20px;
+    }
+
+    h3 {
+        padding: 10px;
+    }
+    ol{
+        list-style-type:circle;
+    }
+    </style>
+</head>
+
+<body>
+    <h2>跨域资源共享及django框架的解决办法</h2>
+    <div class='content'>
+        <h3>1. 跨域资源共享的基本概念</h3>
+        <a href="http://www.ruanyifeng.com/blog/2016/04/cors.html">跨域资源共享 CORS 详解</a>
+        <li>该篇文章讲解十分详细，浏览器和服务器都需要配合。</li>
+        <li>目前云识图对于跨域的运用处于在基本使用的范畴中，即 Access-Control-Allow-Origin: *</li>
+        
+        <h3>2. django框架后台中如何允许跨域请求</h3>
+        <a href="https://stackoverflow.com/questions/22476273/no-access-control-allow-origin-header-is-present-on-the-requested-resource-i"></a>
+        <li>该内容讲解了django如何设置参数</li>
+        <li>中间件添加</li>
+        
+        <h3>3. 延伸出的一些问题和思考</h3>
+        <li>后台是如何知道前台的状态的，毕竟http是无状态的</li>
+        <li>当前云识图的这种django项目模式是如何判断用户在线的</li>
+        <li>前后端分离后状态如何进行判断</li>
+
+        <h3>4. 参考文章</h3>
+        <ol>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">维基百科cors讲解</a>
+            </li>
+        </ol>
+        
+    </div>
+</body>
+
+</html>
