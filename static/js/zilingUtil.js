@@ -208,3 +208,9 @@ function interval(func, w, t, params) {
     }
     return setTimeout(interv, w);
 }
+
+//charge 0
+function charge0(num, length) {
+    //这里用slice和substr均可
+    return (Array(length).join("0") + num).slice(-length);
+}
