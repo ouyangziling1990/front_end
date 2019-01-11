@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关于mouseenter的理解</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <style>
+        .ask_num {
+            float: right;
+            margin-right: 25px;
+            color: #00f8fe;
+            font-size: 16px;
+        }
+        .ask_list {
+            position: absolute;
+            top: 35px;
+            left: 88px;
+        }
+        .ask_list li {
+            width: 255px;
+            height: 42px;
+            line-height: 42px;
+            margin-bottom: 15px;
+            background-color: rgba(6, 75, 131, .5);
+            cursor: pointer;
+        }
+        .left-line {
+            float: left;
+            height: 100%;
+            width: 3px;
+            background-color: #11a0d8;
+        }
+        .icon_subway {
+            width: 23px;
+            height: 23px;
+            background: url(/static/Themes/Images/transaction/askIcon/subway.png) no-repeat;
+            background-size: 100% 100%;
+            margin: 10px 0 0 15px;
+        }
+        .ask_icon {
+            float: left;
+        }
+        .ask_name {
+            float: left;
+            font-size: 20px;
+            margin-left: 20px;
+        }
+        .ask_num {
+            float: right;
+            margin-right: 25px;
+            color: #00f8fe;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="ask_list">
+                        <li data-index="0" class="clearfix animated flipInX">
+                            <p class="left-line"></p>
+                            <div class="ask_icon icon_subway"></div>
+                            <div class="ask_name">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;铁</div>
+                            <div class="ask_num"><span>1,395</span>人</div>
+                        </li>
+                        <li data-index="1" class="clearfix animated flipInX">
+                            <p class="left-line"></p>
+                            <div class="ask_icon icon_taxi"></div>
+                            <div class="ask_name">出&nbsp;&nbsp;租&nbsp;&nbsp;车</div>
+                            <div class="ask_num"><span>2,029</span>人</div>
+                        </li>
+                        <li data-index="2" class="clearfix animated flipInX">
+                            <p class="left-line"></p>
+                            <div class="ask_icon icon_park"></div>
+                            <div class="ask_name">社会车辆</div>
+                            <div class="ask_num"><span>29,628</span>人</div>
+                        </li>
+                        <li data-index="" class="clearfix animated flipInX">
+                            <p class="left-line"></p>
+                            <div class="ask_icon icon_bus"></div>
+                            <div class="ask_name">公&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</div>
+                            <div class="ask_num"><span>68,372</span>人</div>
+                        </li>
+                        <li data-index="0" class="clearfix animated flipInX">
+                            <p class="left-line"></p>
+                            <div class="ask_icon icon_airport"></div>
+                            <div class="ask_name">&nbsp;机场巴士</div>
+                            <div class="ask_num"><span>640</span>人</div>
+                        </li>
+                    </ul>
+    <script>
+        $(function($){
+            
+        })
+    </script>
+</body>
+</html>
