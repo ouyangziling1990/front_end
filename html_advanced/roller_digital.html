@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>soller digital</title>
+    <link rel="stylesheet" href="../static/css/scroll.css">
+    <link rel="stylesheet" href="../static/Include/odometer/odometer-theme-default.css">
+    <style>
+        #num, #num1{
+            font-size: 20px;
+            color:blue;
+        }
+        i{
+            font-style:normal
+        }
+        #num2 i{
+            width: 34px;
+            height: 30px;
+            display: inline-block;
+            background: url(../static/images/ICON/numbers.png) no-repeat;
+            background-position: -13px 0px;
+        }
+        #num3 i{
+            width: 9px;
+            height: 19px;
+            display: inline-block;
+            background: url(../static/images/ICON/number_01.png) no-repeat;
+            /*background-position: -13px 0px;*/
+        }
+        #num4 i{
+            width: 15px;
+            height: 24px;
+            display: inline-block;
+            background: url(../static/images/ICON/num_0_9.png) no-repeat;
+            
+        }
+        body{
+            background-color: #5593BF;
+        }
+        #countup{
+            font-size: 16px;
+            color: yellow;
+        }
+        @font-face {
+            font-family: FZCSJW;
+            src: url('../static/css/Font/fzcst.ttf')
+        }
+        #odometer_2{
+            font-family: FZCSJW !important;
+            font-size: 25px !important;
+            color: #ebdf00 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class='content'>
+        <h3>让数字滚动的三个方式</h3>
+        
+        <h3>1.1 插件方式一： 采用插件countup</h3>
+        <span id='countup'>0</span>&nbsp<input type="text" value='400' id='countup_input'> <button id='countup_button'>点击滚动</button>
+        <br><a href="http://inorganik.github.io/countUp.js/">countup插件官网链接</a>
+        <h3>
+            1.2 插件方式二： 采用插件odometer
+        </h3>
+        <br>
+        <a href="https://github.com/HubSpot/odometer">插件odometer官网链接 </a>
+        <span class='odometer' id='odometer_2'>0</span><input type="text" id='odo_val'><button id='button_odo'>点击输入</button>
+        <br>
+        <h2>2. 方式二： 自制滚动方式，采用图片定位方式</h2>
+        <span id='num1'>0</span><br>
+        <span id='num2'><i></i></span><br>
+        <button id='button'>点击滚动</button>
+        <h3>2.1 滚动图片1</h3>
+        <br>
+        <span id='num3'></span>
+        <input type="text" id='in' value='5897'>
+        <button id='button2'>点击输入</button><br>
+        <h3>2.2 滚动图片2</h3>
+        <br><span id='num4'></span>
+        <input type="text" id='in1' value='1234'>
+        <button id='button3'>点击输入</button><br>
+        
+    </div>
+    <script src="../static/Include/jquery-1.9.1.min.js"></script>
+    <script src="../static/Include/countup/countUp.min.js"></script>
+    <script src="../static/Include/odometer/odometer.min.js"></script>
+    <script src='../static/js/zilingUtil.js'></script>
+
+    <script src='../static/js/roller_digital.js'></script>
+</body>
+</html>
