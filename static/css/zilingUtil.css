@@ -15,3 +15,15 @@ input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px white inset; /*使用大块白色作底*/
     transition: background-color 1s ease-in-out 1s /*这个*/;
 }
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    zoom: 1;
+}

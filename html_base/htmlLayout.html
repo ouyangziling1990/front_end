@@ -3,6 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>页面布局</title>
+    <style>
+        .left{
+            width: 30%;
+            margin: 10px;
+            padding: 5px;
+            float: left;
+            background-color: rgba(0, 203, 243, 0.17);
+        }
+        .wrap_item{
+            float: left;
+            width: 26%;
+        }
+        .digital{
+            font-size: 20px;
+        }
+        .show{
+            padding-left: 20%;
+        }
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+        li span{
+            display: table-cell;
+        }
+        .flag-item {
+            display: table-cell;
+            vertical-align: top;
+        }
+        .flag{
+            /*display: table;*/
+        }
+        .flag-item img{
+            width: 2.4rem;
+            height: 2.4rem;
+            vertical-align: top;
+        }
+        ol, ul, li{
+            list-style: none;
+        }
+        p{
+            margin:0px;
+            padding:0px;
+        };
+    </style>
 </head>
 <body>
     <h3>常见的几种布局方式</h3>
@@ -17,5 +69,80 @@
         <li>弹性布局</li>
         <li>弹性-流体混合布局</li>
     </ol>
+
+    <h4>一个小模块中三行及两行布局方式</h4>
+    <main>
+        <div class='clearfix'>
+            <article class='left'>
+                <h4>1. 两列布局，使用left属性</h4>
+                <div class='show clearfix'>
+                    <div class='wrap_item'>
+                        今日停车数量
+                        <br>
+                        <span class='digital'>20</span><span> 辆</span>
+                    </div>
+                    <div class='wrap_item'>
+                        今日停车
+                        <br>
+                        <span class='digital'>20</span><span> 辆</span>
+                    </div>
+                    <div class='wrap_item'>
+                        今日停车
+                        <br>
+                        <span class='digital'>20</span><span> 辆</span>
+                    </div>
+                </div>
+            </article>
+            <article class='left'>
+                <h4>2. 两列布局，使用table属性</h4>
+                <table style='width: 100%; margin-left: 10%;'>
+                    <tr>
+                        <td>今日停车数量</td>
+                        <td>今日停车</td>
+                        <td>今日停车</td>
+                    </tr>
+                    <tr>
+                        <td><span class='digital'>20</span><span> 辆</span></td>
+                        <td><span class='digital'>20</span><span> 辆</span></td>
+                        <td><span class='digital'>20</span><span> 辆</span></td>
+                    </tr>
+                </table>
+            </article>
+            <article class='left'>
+                <h4>3. 两列布局，使用table_cell属性</h4>
+                <ul>
+                    <li>
+                        <span>今日停车</span>
+                        <span>今日停车</span>
+                        <span>今日停车</span><br>
+                        <span class='digital'>20</span><span> 辆</span>
+                        <span class='digital'>20</span><span> 辆</span>
+                        <span class='digital'>20</span><span> 辆</span>
+                    </li>
+                </ul>
+            </article>
+            <article class='left'>
+                <h4>3. 一行布局，使用table_cell属性</h4>
+                <ul>
+                    <li class='flag'>
+                        <a href="" class='flag-item'>
+                            <img src="https://placeimg.com/350/350/people/grayscale" alt="">
+                        </a>
+                        <div class='flag flag-item'>
+                            <p>走过路过不要错过</p>
+                            <p>happy new year</p>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+        </div>
+        <article>
+            <h4>总结</h4>
+            <p>1. 使用left属性与使用table-cell属性都需要指定item的宽度</p>
+            <p>2. 当header不同时，left和table布局均需要指定宽度</p>
+        </article>
+    </main>
+    
+
 </body>
 </html>
