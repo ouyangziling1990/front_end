@@ -5,3 +5,184 @@ body {
     background: url(../../images/summary/wbg2.jpg) no-repeat;
     background-size: 100% 100%;
 }
+/*header css begin*/
+header h1 {
+    font-size: 35px;
+    color: white;
+    margin-top: 0.9%;
+    font-family: SimHei;
+    font-weight: bold;
+    position: absolute;
+    left: 43%;
+    white-space: nowrap;
+}
+@media screen and (max-width: 1788px){
+    .weather img{
+        display: none;
+    }
+}
+header{
+    height: 90px;
+    margin: 0 20px;
+    width: calc(100% - 40px);
+}
+header .date {
+    float: left;
+    margin-left: 50px;
+    color: white;
+    margin-top: 1.4%;
+    font-family: "Arial Narrow";
+}
+.date>div {
+    float: left;
+}
+#now_time, #lunar{
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+#lunar{
+    font-size: 24px;
+}
+.now_date {
+    margin-left: 20px;
+    text-align: left;
+    font-size: 12px;
+}
+.other_city_weather {
+    margin: 16px 14px 0px 0px;
+    width: 132px;
+    height: 64px;
+    float: right;
+    color: #ffffff;
+    font-family: SimHei;
+    font-size: 13px;
+    overflow: hidden;
+}
+#other_city_continer {
+    position: relative;
+}
+.other_city_weather span{
+    margin-left:0px;
+}
+.other_city_weather p{
+    margin-top:4px;
+}
+.weather_not_act{
+    opacity:0.7;
+    margin-left:8px;
+    height:15px;
+    animation:weather_not_act;
+    -webkit-animation: weather_not_act 1s;
+    -moz-animation: weather_not_act 1s;
+    -ms-animation: weather_not_act 1s;
+    -o-animation: weather_not_act 1s;
+    animation-timing-function: ease-in-out;
+}
+@keyframes weather_not_act{
+    0%{
+        margin-left:0px;
+        font-size:16px;
+        opacity:1;
+    }
+    100%{
+        margin-left:8px;
+        font-size:13px;
+        opacity:0.7;
+    }
+}
+@-webkit-keyframes weather_not_act {
+    0%{
+        margin-left:0px;
+        font-size:16px;
+        opacity:1;
+    }
+    100%{
+        margin-left:8px;
+        font-size:13px;
+        opacity:0.7;
+    }
+}
+@-ms-keyframes weather_not_act {
+    0%{
+        margin-left:0px;
+        font-size:16px;
+        opacity:1;
+    }
+    100%{
+        margin-left:8px;
+        font-size:13px;
+        opacity:0.7;
+    }
+}
+.weather_act{
+    font-size:16px;
+    height:22px;
+    line-height:22px;
+    animation:weather_act;
+    -webkit-animation: weather_act 1s;
+    -moz-animation: weather_act 1s;
+    -ms-animation: weather_act 1s;
+    -o-animation: weather_act 1s;
+    animation-timing-function: ease-in-out;
+}
+@keyframes weather_act{
+    0%{
+        margin-left:8px;
+        font-size:13px;
+        opacity:0.7;
+    }
+    100%{
+        margin-left:0px;
+        font-size:16px;
+        opacity:1;
+    }
+}
+@-webkit-keyframes weather_act {
+    0%{
+        margin-left:8px;
+        font-size:13px;
+        opacity:0.7;
+    }
+    100%{
+        margin-left:0px;
+        font-size:16px;
+        opacity:1;
+    }
+}
+@-ms-keyframes weather_act {
+    0%{
+        margin-left:8px;
+        font-size:13px;
+        opacity:0.7;
+    }
+    100%{
+        margin-left:0px;
+        font-size:16px;
+        opacity:1;
+    }
+}
+.weather_pic{
+    display:inline-block;
+    width:28px;
+    height:22px;
+}
+
+header .weather {
+    float: right;
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 36px;
+    margin-right: 20px;
+    font-family: FranklinGothic;
+}
+.weather span,
+.weather img {
+    vertical-align: bottom;
+    margin-left: 5px;
+}
+#location_beijing{
+    font-size: 28px;
+    line-height: 40px;
+}
+/*header css end*/

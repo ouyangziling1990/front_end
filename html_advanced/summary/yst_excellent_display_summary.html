@@ -7,6 +7,37 @@
     <link rel="stylesheet" href="../../static/css/summary/summary1.css">
 </head>
 <body>
-    
+    <!-- 该页面采用更加适应性的布局，不让字体大小定死 -->
+    <header>
+        <div class="date">
+            <div id="now_time"></div>
+            <div id='lunar'></div>
+            <div class="now_date">
+                <div id="now_day"></div>
+                <div id="now_date"></div>
+            </div>
+        </div>
+        <h1>优秀展示效果汇总</h1>
+        <div class="other_city_weather">
+            <div id="tmp_d">
+                <div id="other_city_continer">
+                </div>
+            </div>
+        </div>
+        <div class="weather">
+            <span id='location_beijing'>北京</span>
+            <span id="weather_t"></span>
+            <img>
+        </div>
+    </header>
+    <script src='../../static/Include/jquery-1.9.1.min.js'></script>
+    <script src='../../static/Include/lucalendar/calendar.js'></script>
+    <script src='../../static/Include/self_plugin/carouselWeather.js'></script>
+
+    <script src='../../static/js/zilingUtil.js'></script>
+
+
+    <script src='../../static/js/summary/common_data.js'></script>
+    <script src='../../static/js/summary/summary1.js'></script>
 </body>
 </html>
