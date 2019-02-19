@@ -1,7 +1,10 @@
-var global_var = {}
+var global_var = {
+    weather_icon_path: '../../static/images/weather_icon/'
+}
 //header
 //天气轮播效果
 $(function($) {
+    var weather_icon_path = global_var['weather_icon_path']
     getWeather();
     interval_timeout(function() {
         getWeather();
@@ -15,13 +18,13 @@ $(function($) {
             if (data.code === 0) {
                 weatherS.text(data.data.BJ_weather_info.temperature.replace(/℃/g, '°'));
                 if (data.data.BJ_weather_info.weather.indexOf('雪') > -1) {
-                    weatherI[0].src = '/static/Themes/Images/ICON/mh_snow.png'
+                    weatherI[0].src = weather_icon_path + 'mh_snow.png'
                 } else if (data.data.BJ_weather_info.weather.indexOf('雨') > -1) {
-                    weatherI[0].src = '/static/Themes/Images/ICON/mh_rain.png'
+                    weatherI[0].src = weather_icon_path + 'mh_rain.png'
                 } else if (data.data.BJ_weather_info.weather.indexOf('阴') > -1) {
-                    weatherI[0].src = '/static/Themes/Images/ICON/mh_cloudy.png'
+                    weatherI[0].src = weather_icon_path + 'mh_cloudy.png'
                 } else {
-                    weatherI[0].src = '/static/Themes/Images/ICON/mh_sunny.png'
+                    weatherI[0].src = weather_icon_path + 'mh_sunny.png'
                 }
 
                 other_city_continers = data.data.other_weather_info;
