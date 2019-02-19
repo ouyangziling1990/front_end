@@ -193,8 +193,16 @@ function throttle(fn,interval){
 function classof(O){
     return Object.prototype.toString.call(O).slice(8, -1)
 }
-// 用setTimeout代替setInterval
-function interval(func, w, t, params) {
+
+/**
+ * [interval_timeout 用setTimeout代替setInterval]
+ * @param  {[type]} func   [the function to execute]
+ * @param  {[type]} w      [the interval execute time, 执行间隔时间]
+ * @param  {[type]} t      [执行次数]
+ * @param  {[type]} params [函数需要带的参数，以数组形式给出]
+ * @return {[type]}        [setTimeout执行函数]
+ */
+function interval_timeout(func, w, t, params) {
     var interv = function() {
         if (typeof t === "undefined" || t-- > 0) {
             setTimeout(interv, w);
