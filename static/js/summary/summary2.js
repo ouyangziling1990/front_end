@@ -1286,6 +1286,364 @@ $(function($){
         return xArr
     }
 })
+// 三个图片轮播效果
+$(function($){
+    var history_move_param ={}, seven_day_flow_param = {}
+    var history_chart_container = echarts.init(document.getElementById('history_move'))
+    var seven_day_flow = echarts.init(document.getElementById('seven_day_flow'))
+    create_history_move_chart()
+    seven_day_flow_fun()
+
+    function create_history_move_chart() {
+        var data = common_data['history_move']
+        // $.ajax({
+        //     url: '/analysis/capability?type=' + history_move_type,
+        //     type: "GET",
+        //     async: true,
+        //     success: function(data) {
+                var code = data.code;
+                var message = data.message
+                if (code != 0) {
+                    return
+                }
+                $("#history_move_yesterday").text(format_year_month(data.data['record_date']))
+                xArr = [], yArr = [];
+                xArr.push('铁路出站')
+                xArr.push('地铁')
+                xArr.push('公交')
+                xArr.push('出租车')
+                xArr.push('社会停车场')
+
+                yArr.push(get_k_num(data.data['train_get_off_num']))
+                yArr.push(get_k_num(data.data['subway_p_in_station_num']))
+                yArr.push(get_k_num(data.data['bus_p_num']))
+                yArr.push(get_k_num(data.data['taxi_p_num']))
+                yArr.push(get_k_num(data.data['park_p_num']))
+                history_move_param['xArr'] = xArr
+                history_move_param['yArr'] = yArr
+                set_history_move_chart(xArr, yArr)
+            // }
+        // })
+    }
+    function get_k_num(num) {
+        return (num / 10000).toFixed(1)
+    }
+    function set_history_move_chart(xArr, yArr) {
+        var option = {
+            title: {
+                text: "客流量（万）",
+                textStyle: {
+                    fontWeight: 'normal', //标题颜色
+                    color: 'white',
+                    fontSize: 12
+                }
+            },
+            // backgroundColor: 'rgba(0, 179, 234, 0.17)',
+            legend: {
+                data: ['人数'],
+                textStyle: { //标题颜色
+                    color: '#3398db',
+                    fontSize: 15
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+                },
+                formatter: function(param) {
+                    var res = ""
+                    var bgcolor = param[0]['color']['colorStops'][1]['color'];
+                    res += param[0].axisValue + "<br>"
+                    res += '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' + bgcolor + '"></span>'
+                    res += param[0].value + "万"
+                    return res;
+                }
+            },
+            xAxis: {
+                type: 'category',
+                data: xArr,
+                axisLabel: {
+                    textStyle: {
+                        color: 'white'
+                    }
+                },
+                axisLabel: {
+                    interval: 0,
+                    rotate: 10,
+                    align: 'center',
+                    margin: 10
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: 'white'
+                    },
+                    symbol: ['none', 'arrow'],
+                    symbolSize: [8, 12],
+                    symbolOffset: [0, 10]
+                },
+            },
+            yAxis: {
+
+                axisTick: {
+                    show: true
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: 'white'
+                    },
+                    formatter: '{value} '
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: 'white'
+                    },
+                    symbol: ['none', 'arrow'],
+                    symbolSize: [8, 12],
+                    symbolOffset: [0, 10]
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: ['#00b3ea'],
+                        type: 'dotted',
+                        opacity: 0.4
+                    }
+                },
+                splitNumber: 4
+            },
+            grid: {
+                x: 40, //默认是80px
+                y: 35, //默认是60px
+                x2: 20, //默认80px
+                y2: 30 //默认60px
+            },
+
+            series: [{
+                itemStyle: {
+                    normal: {
+                        color: function(params) {
+                            var colorList = [
+                                new echarts.graphic.LinearGradient(
+                                    0, 0, 0, 1,
+                                    [
+                                        { offset: 1, color: '#007fd0' },
+                                        { offset: 0, color: '#1bffe6' }
+                                    ]
+                                ),
+                                new echarts.graphic.LinearGradient(
+                                    0, 0, 0, 1,
+                                    [
+                                        { offset: 1, color: '#cb0851' },
+                                        { offset: 0, color: '#fc7cb5' }
+                                    ]
+                                ),
+                                new echarts.graphic.LinearGradient(
+                                    0, 0, 0, 1,
+                                    [
+                                        { offset: 1, color: '#ffc27a' },
+                                        { offset: 0, color: '#fffacc' }
+                                    ]
+                                ),
+                                new echarts.graphic.LinearGradient(
+                                    0, 0, 0, 1,
+                                    [
+                                        { offset: 1, color: '#7eb550' },
+                                        { offset: 0, color: '#e5ffc9' }
+                                    ]
+                                ),
+                                new echarts.graphic.LinearGradient(
+                                    0, 0, 0, 1,
+                                    [
+                                        { offset: 1, color: '#007fd0' },
+                                        { offset: 0, color: '#1bffe6' }
+                                    ]
+                                ),
+                                new echarts.graphic.LinearGradient(
+                                    0, 0, 0, 1,
+                                    [
+                                        { offset: 1, color: '#cb0851' },
+                                        { offset: 0, color: '#fc7cb5' }
+                                    ]
+                                ),
+                            ]
+                            return colorList[params.dataIndex]
+                        }
+                    },
+                },
+                type: 'bar',
+                data: yArr,
+                barWidth: 20,
+                animationDelay: function(idx) {
+                    return idx * 100;
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top',
+                        textStyle: {
+                            color: 'white'
+                        }
+                    }
+                },
+            }]
+        };
+        history_chart_container.clear()
+        history_chart_container.setOption(option, true)
+    }
+    function format_year_month(record_data, year) {
+        if (!year) {
+            year = false;
+        }
+        if (!record_data) {
+            return ""
+        }
+        var res = ""
+        record_data = record_data.split('-')
+        if (year) {
+            res += record_data[0] + '年'
+        }
+        res += delete_zero(record_data[1]) + "月" + delete_zero(record_data[2]) + "日"
+        return res
+    }
+
+    function delete_zero(str1) {
+        str1 = str1 + ""
+        return str1.substr(0, 1) == "0" ? str1.substr(1) : str1
+    }
+
+    //seven day flow
+    function seven_day_flow_fun(){
+        var data = common_data['seven_day_flow']
+        if (data.code != 0) {
+            return;
+        }
+        if (JSON.stringify(data.data['total']) == '{}') {
+            return;
+        }
+        $('#legend_display').hide()
+        var data = data.data['total'];
+        var xArr = [];
+        var yArr = [];
+        for (var k in data) {
+            xArr.push(k.slice(k.indexOf('-') + 1))
+            yArr.push(Math.round(data[k]['in_num'] / 10000 * 10) / 10)
+        }
+
+        var param = {
+            yTitle: '客流量(万人)',
+            xArr: xArr,
+            yArr: yArr,
+            bgcolor: '#cb0851',
+            obj: seven_day_flow,
+            color: [new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                    {offset: 1, color: 'rgba(203,8,81,0.7)'},
+                    {offset: 0, color: 'rgba(252,124,181,0.7)'}
+                ]
+            ), new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                    {offset: 1, color: '#007fd0'},
+                    {offset: 0, color: '#1bffe6'}
+                ]
+            )],
+        }
+        seven_day_flow_param = param
+        setSevenDataChart(param)
+    }
+    
+    function setSevenDataChart(param) {
+        var bgcolor = param['bgcolor']
+        var option = {
+            title: {
+                text: param.yTitle,
+                textStyle: {
+                    fontWeight: 'normal', //标题颜色
+                    color: 'white',
+                    fontSize: 12
+                }
+            },
+            // backgroundColor: 'rgba(0, 179, 234, 0.17)',
+            legend: {
+                data: ['人数'],
+                textStyle: { //标题颜色
+                    color: '#3398db',
+                    fontSize: 15
+                }
+            },
+            xAxis: {
+                type: 'category',
+                data: param.xArr,
+                axisLine: {
+                    show: false,
+                },
+                axisLabel: {
+                    interval: 0,
+                    rotate: 10,
+                    margin: 12,
+                    align: 'center',
+                    textStyle: {
+                        color: 'white'
+                    }
+                }
+            },
+            yAxis: {
+                axisLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: ['#00b3ea'],
+                        type: 'dotted',
+                        opacity: 0.4
+                    }
+                }
+            },
+            grid: {
+                x: 20, //默认是80px
+                y: 35, //默认是60px
+                x2: 20, //默认80px
+                y2: 40 //默认60px
+            },
+            color: param.color,
+            series: [{
+                type: 'bar',
+                data: param.yArr,
+                barMaxWidth: 20,
+                itemStyle: {
+                    normal: {
+                        barBorderRadius: [15, 15, 1, 1],
+                        // color: function (params) {
+                        //     if (params.name == '明天' || params.name == '后天' || params.name == '今天') {
+                        //         return param.color[1]
+                        //     } else {
+                        //         return param.color[0]
+                        //     }
+                        // }
+                        color: param.color[1]
+                    }
+                },
+                label: {
+                    show: true,
+                    position: 'top',
+                    //distance: 10,
+                    color: 'white',
+                    formatter: '{c}'
+                },
+                animationDelay: function(idx) {
+                    return idx * 100;
+                }
+            }],
+            animationEasing: 'elasticOut',
+        }
+        param.obj.clear();
+        param.obj.setOption(option, true)
+    }
+})
 
 function get_datestr_scope(type) {
     //获取请求的时间间隔 如 02:00 -- 次日两点. 按照24小时，按照天为1， 按照小时为2

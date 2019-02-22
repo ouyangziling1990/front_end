@@ -186,7 +186,9 @@ header .weather {
     line-height: 40px;
 }
 /*header css end*/
-
+.hidden_t{
+    display: none;
+}
 /*main*/
 main {
     margin: 30px 30px 40px 57px;
@@ -197,6 +199,7 @@ main {
     left: 0;
     right: 0;
 }
+/*left model start*/
 .left{
     float: left;
     width: 26.7%;
@@ -282,6 +285,33 @@ h3 {
     display: inline-block;
     background: url(../../Images/summary/num_0_9.png) no-repeat;
 }
+
+#left_middle, #right_middle {
+    width: 100%;
+    height: calc(33.33% - 20px);
+    background: url(../../images/summary/left_middle_bg.png);
+    margin-top: 20px;
+    background-size: 100% 100%;
+}
+#history_move_yesterday{
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 22px;
+    color: #fff;
+}
+#history_move_container, #seven_day{
+    height: 100%;
+}
+#history_move{
+    height: calc(100% - 40px);
+    margin-top: 10px;
+}
+#seven_day_flow{
+    height: calc(100% - 40px);
+    margin-top: 10px;
+}
+/*left model end*/
 
 /* 中间模块内容 */
 .main {
