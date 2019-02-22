@@ -1,0 +1,374 @@
+html, body {
+    height: 100%;
+}
+body {
+    background: url(../../images/summary/wbg2.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+/*header css begin*/
+header h1 {
+    font-size: 35px;
+    color: white;
+    margin-top: 0.9%;
+    font-family: SimHei;
+    font-weight: bold;
+    position: absolute;
+    left: 43%;
+    white-space: nowrap;
+}
+@media screen and (max-width: 1788px){
+    .weather img{
+        display: none;
+    }
+}
+header{
+    height: 90px;
+    margin: 0 20px;
+    width: calc(100% - 40px);
+}
+header .date {
+    float: left;
+    margin-left: 50px;
+    color: white;
+    margin-top: 1.4%;
+    font-family: "Arial Narrow";
+}
+.date>div {
+    float: left;
+}
+#now_time, #lunar{
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+#lunar{
+    font-size: 24px;
+}
+.now_date {
+    margin-left: 20px;
+    text-align: left;
+    font-size: 12px;
+}
+.other_city_weather {
+    margin: 16px 14px 0px 0px;
+    width: 132px;
+    height: 64px;
+    float: right;
+    color: #ffffff;
+    font-family: SimHei;
+    font-size: 13px;
+    overflow: hidden;
+}
+#other_city_continer {
+    position: relative;
+}
+.other_city_weather span{
+    margin-left:0px;
+}
+.other_city_weather p{
+    margin-top:4px;
+}
+.weather_not_act{
+    opacity:0.7;
+    margin-left:8px;
+    height:15px;
+    animation:weather_not_act;
+    -webkit-animation: weather_not_act 1s;
+    -moz-animation: weather_not_act 1s;
+    -ms-animation: weather_not_act 1s;
+    -o-animation: weather_not_act 1s;
+    animation-timing-function: ease-in-out;
+}
+@keyframes weather_not_act{
+    0%{
+        margin-left:0px;
+        font-size:16px;
+        opacity:1;
+    }
+    100%{
+        margin-left:8px;
+        font-size:13px;
+        opacity:0.7;
+    }
+}
+@-webkit-keyframes weather_not_act {
+    0%{
+        margin-left:0px;
+        font-size:16px;
+        opacity:1;
+    }
+    100%{
+        margin-left:8px;
+        font-size:13px;
+        opacity:0.7;
+    }
+}
+@-ms-keyframes weather_not_act {
+    0%{
+        margin-left:0px;
+        font-size:16px;
+        opacity:1;
+    }
+    100%{
+        margin-left:8px;
+        font-size:13px;
+        opacity:0.7;
+    }
+}
+.weather_act{
+    font-size:16px;
+    height:22px;
+    line-height:22px;
+    animation:weather_act;
+    -webkit-animation: weather_act 1s;
+    -moz-animation: weather_act 1s;
+    -ms-animation: weather_act 1s;
+    -o-animation: weather_act 1s;
+    animation-timing-function: ease-in-out;
+}
+@keyframes weather_act{
+    0%{
+        margin-left:8px;
+        font-size:13px;
+        opacity:0.7;
+    }
+    100%{
+        margin-left:0px;
+        font-size:16px;
+        opacity:1;
+    }
+}
+@-webkit-keyframes weather_act {
+    0%{
+        margin-left:8px;
+        font-size:13px;
+        opacity:0.7;
+    }
+    100%{
+        margin-left:0px;
+        font-size:16px;
+        opacity:1;
+    }
+}
+@-ms-keyframes weather_act {
+    0%{
+        margin-left:8px;
+        font-size:13px;
+        opacity:0.7;
+    }
+    100%{
+        margin-left:0px;
+        font-size:16px;
+        opacity:1;
+    }
+}
+.weather_pic{
+    display:inline-block;
+    width:28px;
+    height:22px;
+}
+
+header .weather {
+    float: right;
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 36px;
+    margin-right: 20px;
+    font-family: FranklinGothic;
+}
+.weather span,
+.weather img {
+    vertical-align: bottom;
+    margin-left: 5px;
+}
+#location_beijing{
+    font-size: 28px;
+    line-height: 40px;
+}
+/*header css end*/
+
+/*main*/
+main {
+    margin: 30px 30px 40px 57px;
+    width: calc(100% - 120px);
+    position: absolute;
+    top: 86px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.left{
+    float: left;
+    width: 26.7%;
+    height: 100%;
+}
+#left_top, #right_middle {
+    padding: 5px 10px 0px;
+    position: relative;
+    overflow: hidden;
+}
+h3 {
+    font-family: SimHei;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    line-height: 26px;
+    letter-spacing: 0px;
+    color: #49fffe;
+    margin-left: 35px;
+}
+.left_top_icon {
+    height: 12px;
+    width: 21px;
+    background: url(../../Images/section_icon/spring_train_icon.png) no-repeat center;
+}
+.position {
+    display: inline-block;
+    position: absolute;
+    top: 12px;
+    left: 20px;
+}
+.flow_statistic {
+    padding: 0px 18% 2px;
+}
+.flow_statistic > div {
+    font-family: SimHei;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 28px;
+    letter-spacing: 0px;
+    color: #49fffe;
+}
+.flow_statistic_today {
+    float: left;
+}
+.font_b_y {
+    font-family: FZCSJW;
+    font-size: 25px !important;
+    color: #ebdf00 !important;
+}
+.flow_statistic_now {
+    float: right;
+}
+#statistic_1_type, #statistic_2_type {
+    position: absolute;
+    right: 21px;
+    top: 95px;
+    font-size: 12px;
+    color: #00cbf3;
+    z-index: 10;
+}
+#left_top {
+    width: 100%;
+    height: 33.33%;
+    border: solid 1px rgba(0,179,234,0.3);
+}
+#statistic_1_type > span:hover, #statistic_2_type > span:hover {
+    cursor: pointer;
+    color: #fff;
+}
+
+#statistic_1_type > .act, #statistic_2_type > .act {
+    color: #fff;
+}
+#statistic_1 {
+    width: 100%;
+    height: 66%;
+}
+.rollnum i {
+    width: 15px;
+    height: 24px;
+    display: inline-block;
+    background: url(../../Images/summary/num_0_9.png) no-repeat;
+}
+
+/* 中间模块内容 */
+.main {
+    float: left;
+    width: 44%;
+    margin-left: 12px;
+    height: 100%;
+}
+#main_top {
+    width: 100%;
+    height: 133px;
+    background: url(../../Images/summary/springtitle_bg1.png);
+    background-size: 100% 100%;
+    padding: 0px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 133px;
+}
+#main_middle, #main_bottom {
+    margin-left: 3px;
+}
+#main_middle {
+    margin-top: 17px;
+    width: calc(100% - 8px);
+    height: calc(50% - 83.5px);
+    background: url(../../Images/summary/middle_top_bg.png);
+    background-size: 100% 100%;
+}
+.middle_middle_icon {
+    top: 10px;
+    height: 16px;
+    width: 21px;
+    background: url(../../Images/section_icon/spring_train_icon.png) no-repeat center;
+}
+#capacity_arrive, #capacity_arrive1{
+    width: 100%;
+    height: calc(100% - 34px);
+    /*height: 313px;*/
+    margin-top: 18px;
+}
+
+/*right model*/
+.right {
+    width: 26.7%;
+    float: left;
+    margin-left: 12px;
+    height: 100%;
+}
+#right_top {
+    width: 100%;
+    height: 33.3%;
+    border: solid 1px rgba(0,179,234,0.3);
+    font-family: SimHei;
+    position: relative;
+}
+.right_top_icon {
+    height: 16px;
+    width: 21px;
+    top: 11px;
+    background: url(../../Images/section_icon/right_top_icon.png) no-repeat center;
+}
+article>section {
+    padding: 5px 10px 0px;
+    position: relative;
+}
+#right_top .select_span {
+    position: absolute;
+    right: 30px;
+    top: 104px;
+    z-index: 100;
+}
+.select_span {
+    text-align: right;
+    color: #00cbf3;
+    padding-right: 10px;
+}
+.select_span span {
+    cursor: pointer;
+}
+.selected {
+    color: #fff;
+    font-size: 10px;
+}
+#subway_start {
+    width: 100%;
+    height: calc(100% - 98px);
+    margin-top: 5px;
+}

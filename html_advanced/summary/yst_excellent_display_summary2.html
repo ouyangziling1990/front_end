@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>良好的echart页面展示效果汇总，及模块化构思，模板页</title>
+    <link rel="stylesheet" href="../../static/css/common/base_css.css">
+    <link rel="stylesheet" href="../../static/css/summary/summary2.css">
+</head>
+<body>
+    <!-- 该页面采用更加适应性的布局，不让字体大小定死 -->
+    <header>
+        <div class="date">
+            <div id="now_time"></div>
+            <div id='lunar'></div>
+            <div class="now_date">
+                <div id="now_day"></div>
+                <div id="now_date"></div>
+            </div>
+        </div>
+        <h1>优秀图表展示效果汇总</h1>
+        <div class="other_city_weather">
+            <div id="tmp_d">
+                <div id="other_city_continer">
+                </div>
+            </div>
+        </div>
+        <div class="weather">
+            <span id='location_beijing'>北京</span>
+            <span id="weather_t"></span>
+            <img>
+        </div>
+    </header>
+    <main>
+        <article class='left'>
+            <section id='left_top'>
+                <span class='left_top_icon position'></span>
+                <h3>铁路出站</h3>
+                <div class="flow_statistic clearfix">
+                    <div class="flow_statistic_today">今日客流量 <br> <span id="left1" class="font_b_y rollnum"></span> 人</div>
+                    <div class="flow_statistic_now">最近30分钟客流量 <br> <span id="left2" class="font_b_y rollnum"></span> 人</div>
+                </div>
+                <div id="statistic_1_type">
+                    <span class="type_hour">1小时</span>
+                    <span class="type_day act">24小时</span>
+                </div>
+                <div id="statistic_1"></div>
+            </section>
+        </article>
+        <article class='main'>
+            <section id='main_top'>
+                Stay hungry. Stay foolish.
+            </section>
+            <section id='main_middle'>
+                <span class='middle_middle_icon position'></span>
+                <h3>2018至2019年春运铁路客流</h3>
+                <div id='capacity_arrive'>
+                </div>
+            </section>
+        </article>
+        <article class='right'>
+            <section id='right_top'>
+                <span class='right_top_icon position'></span>
+                <h3>地铁出站</h3>
+                <div class="flow_statistic clearfix">
+                    <div class="flow_statistic_today">今日客流量 <br> <span id='today_flow' class='rollnum'></span> 人</div>
+                    <div class="flow_statistic_now">最近30分钟客流量 <br> <span id='thrity_min_flow' class='rollnum'></span> 人</div>
+                </div>
+                <div class='select_span'>
+                    <span id='hour_1' >1小时</span>
+                    <span id='hour_24' class='selected' >24小时</span>
+                </div>
+                <div id='subway_start'>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src='../../static/Include/jquery-1.9.1.min.js'></script>
+    <script src="../../static/Include/echarts.min.js"></script>
+    <script src='../../static/Include/lucalendar/calendar.js'></script>
+    <script src='../../static/Include/self_plugin/carouselWeather.js'></script>
+
+    <script src='../../static/js/zilingUtil.js'></script>
+
+
+    <script src='../../static/js/summary/common_data.js'></script>
+    <script src='../../static/js/summary/summary2.js'></script>
+</body>
+</html>
