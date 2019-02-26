@@ -5,6 +5,7 @@
     <title>良好的echart页面展示效果汇总，及模块化构思，模板页</title>
     <link rel="stylesheet" href="../../static/css/common/base_css.css">
     <link rel="stylesheet" href="../../static/css/summary/summary2.css">
+    <link rel="stylesheet" href="../../static/css/animate/animate.css">
 </head>
 <body>
     <!-- 该页面采用更加适应性的布局，不让字体大小定死 -->
@@ -46,19 +47,31 @@
                 <div id="statistic_1"></div>
             </section>
             <section id='left_middle'>
-                <div id="history_move_container" class='hidden_t'>
+                <div id="history_move_container">
                     <h3 id="yesterday_move_title" class="h3_act">昨日运力</h3>
                     <span id="history_move_yesterday" class="act" attr="yesterday">昨天</span>
                     <div id="history_move">
                     </div>
                 </div>
-                <div id="seven_day" >
+                <div id="seven_day" class='hidden_t'>
                     <h3 id="yesterday_move_title" class="h3_act">最近7天出站客流</h3>
-                    <ul id="legend_display" style="position: absolute;top: 8px;left: 220px;">
-                        <li style="float: left;font-size:12px;color: #fff;margin-right: 10px;"><span style="display: inline-block;width: 10px;height: 10px;background-color:rgba(203,8,81,0.7);margin-right: 5px;"></span>历史</li>
-                        <li style="float: left;font-size:12px;color: #fff"><span style="display: inline-block;width: 10px;height: 10px;background-color: #007fd0;margin-right: 5px;"></span>预测</li>
-                    </ul>
                     <div id='seven_day_flow'></div>
+                </div>
+                <div id="move_container" class='hidden_t'>
+                    <h3>历史峰值（万人）</h3>
+                    <div id="history_top_continer">
+                        <div id="top_history_label">
+                            <span id="history_train" class='inline-block'></span>
+                            <span>铁路</span>
+                            <span id="history_subway" class='inline-block'></span>
+                            <span>地铁</span>
+                        </div>
+                            <span id='history_subway_top'></span>
+                            <span id='history_train_top'></span>
+                            <span id='annual_subway_top'></span>
+                            <span id='annual_train_top'></span>
+                        <div id="history_top"></div>
+                    </div>
                 </div>
             </section>
         </article>

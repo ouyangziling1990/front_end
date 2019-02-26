@@ -156,6 +156,8 @@ $(function($) {
             res = common_data['30min_flow']
         } else {
             res = common_data['today_flow']
+            // console.log('24h')
+            // console.log(res)
         }
         if (res.code != 0) {
             return;
@@ -179,7 +181,6 @@ $(function($) {
                     xArr.push(j.slice(0, j.lastIndexOf(':')))
                 }
             }
-
         } else if (type == 24) {
             for (var j in res['data']['group'][0]['data']) {
                 xArr.push(Number(j.slice(j.indexOf(' ') + 1, j.indexOf(':'))))
@@ -199,7 +200,8 @@ $(function($) {
             //todo end
         }
         //todo 北二出站口1,2累加
-        var dataList = res['data']['group'];
+        var dataList = []
+        Object.assign(dataList, res['data']['group']);
         var tempList;
         for (var n in dataList) {
             if (dataList[n]['id'] == "6D82-2191-D317-1173") {
@@ -644,7 +646,7 @@ $(function($){
         //     success:function(data){
                 var code = data.code
                 if(code != 0)return;
-                console.log(data.data.total)
+                // console.log(data.data.total)
                 if (data['data']['group'].length == 0) {
                     return;
                 }
@@ -664,15 +666,10 @@ $(function($){
 
                     }
                 }
-                console.log('res')
-                console.log(res)
                 if(!res['xArr']){
                     res['xArr'] = xArr
                     res['yArr'] = yArr
                 }
-                console.log(res)
-                // console.log('yarr')
-                // console.log(yArr)
                 //设置 最近30分钟客流量
                 if(type == 2){
                     var min_30_count = 0;
@@ -1286,13 +1283,90 @@ $(function($){
         return xArr
     }
 })
+
+
 // 三个图片轮播效果
 $(function($){
-    var history_move_param ={}, seven_day_flow_param = {}
+    $.fn.extend({
+        animateCss: function(animationName, callback) {
+            var animationEnd = (function(el) {
+                var animations = {
+                    animation: 'animationend',
+                    OAnimation: 'oAnimationEnd',
+                    MozAnimation: 'mozAnimationEnd',
+                    WebkitAnimation: 'webkitAnimationEnd',
+                };
+
+                for (var t in animations) {
+                    if (el.style[t] !== undefined) {
+                        return animations[t];
+                    }
+                }
+            })(document.createElement('div'));
+
+            this.addClass('animated ' + animationName).one(animationEnd, function() {
+                $(this).removeClass('animated ' + animationName);
+
+                if (typeof callback === 'function') callback();
+            });
+            return this;
+        },
+    });
+    var history_move_param ={}, seven_day_flow_param = {}, history_top_continer_param = {};
     var history_chart_container = echarts.init(document.getElementById('history_move'))
     var seven_day_flow = echarts.init(document.getElementById('seven_day_flow'))
+    var history_top_chart_container = echarts.init(document.getElementById('history_top'))
+    $(window).resize(function(){
+        history_chart_container.resize()
+        seven_day_flow.resize()
+        history_top_chart_container.resize()
+    })
+    
+    var bottomSwitchArr = ["#history_move_container", '#seven_day', '#move_container', ]
+    var bottomSwitchIndex = 0;
+    var $current_obj = $('#history_move_container')
+    var $next_obj = $('#seven_day')
+    var bottomSwithInterval = setInterval(function() {
+        // if (!flag6) return;
+        bottomSwitchIndex %= 3
+        
+        $current_obj.animateCss('bounceOut', function() {
+            $current_obj.addClass('hidden_t')
+            $next_obj.removeClass('hidden_t').animateCss('bounceIn')
+
+            $current_obj = $next_obj;
+            var tmp_index = 0;
+            tmp_index = (bottomSwitchIndex + 1) % 3
+            $next_obj = $(bottomSwitchArr[tmp_index])
+            // if (seven_day_flow_param) {
+                setSevenDataChart(seven_day_flow_param)
+                // setTimeout(function(){
+                //     setSevenDataChart(seven_day_flow_param)
+                // }, 200)
+                // setSevenDataChart(seven_day_flow_param)
+            // }
+            // if (history_move_param) {
+                set_history_move_chart(history_move_param.xArr, history_move_param.yArr)
+                // setTimeout(function(){
+                //     set_history_move_chart(history_move_param.xArr, history_move_param.yArr)
+                // }, 200)
+                // set_history_move_chart(history_move_param.xArr, history_move_param.yArr)
+            // }
+            // if (history_top_continer_param) {
+                // setTimeout(function(){
+                //     create_history_top_chart_body(history_top_continer_param.xArr, history_top_continer_param.yArr, history_top_continer_param.tem_yArr)
+                // }, 200)
+                create_history_top_chart_body(history_top_continer_param.xArr, history_top_continer_param.yArr, history_top_continer_param.tem_yArr)
+                // create_history_top_chart_body(history_top_continer_param.xArr, history_top_continer_param.yArr, history_top_continer_param.tem_yArr)
+            // }
+        });
+        
+        bottomSwitchIndex += 1;
+    }, 9 * 1000)
+
     create_history_move_chart()
     seven_day_flow_fun()
+    create_history_top_chart()
 
     function create_history_move_chart() {
         var data = common_data['history_move']
@@ -1489,6 +1563,7 @@ $(function($){
         };
         history_chart_container.clear()
         history_chart_container.setOption(option, true)
+        history_chart_container.resize()
     }
     function format_year_month(record_data, year) {
         if (!year) {
@@ -1642,6 +1717,197 @@ $(function($){
         }
         param.obj.clear();
         param.obj.setOption(option, true)
+        param.obj.resize()
+    }
+    function format_year_month1(date) {
+        var arr = date.split('-')
+        return arr[0] + arr[1] + arr[2]
+    }
+    function create_history_top_chart() {
+        var data = common_data['history_top_capa']
+        // $.ajax({
+        //     url: "/analysis/capability/peak",
+        //     type: 'GET',
+        //     async: true,
+        //     success: function(data) {
+                var code = data.code;
+                var msg = data.message;
+                if (code != 0) {
+                    return
+                }
+                data = data.data
+                var xArr = [],
+                    yArr = [],
+                    tem_yArr = []
+                xArr.push(data.train.history.date)
+                xArr.push(data.subway.history.date)
+                xArr.push(data.train.annual.date)
+                xArr.push(data.subway.annual.date)
+                $('#history_train_top').text(format_year_month1(data.train.history.date))
+                $('#history_subway_top').text(format_year_month1(data.subway.history.date))
+                $('#annual_train_top').text(format_year_month1(data.train.annual.date))
+                $('#annual_subway_top').text(format_year_month1(data.subway.annual.date))
+                yArr.push(data.train.history.num)
+                yArr.push(data.train.annual.num)
+                yArr.push(data.subway.history.num)
+                yArr.push(data.subway.annual.num)
+
+                tem_yArr.push(data.train.history.num)
+                tem_yArr.push(data.subway.history.num)
+                tem_yArr.push(data.train.annual.num)
+                tem_yArr.push(data.subway.annual.num)
+                history_top_continer_param['xArr'] = xArr
+                history_top_continer_param['yArr'] = yArr
+                history_top_continer_param['tem_yArr'] = tem_yArr
+                create_history_top_chart_body(xArr, yArr, tem_yArr)
+            // }
+        // })
+    }
+
+    function create_history_top_chart_body(xArr, yArr, tem_yArr) {
+        var formatter = function(params) {
+            var tmp = params[0].dataIndex ? 1 : 0
+            var index1 = params[0].dataIndex + params[0].seriesIndex + tmp
+            var index2 = params[1].dataIndex + params[1].seriesIndex + tmp
+            var ah = '<div>' +
+                '<div style="display: inline-block;vertical-align: middle">' +
+                '<p>' + '铁路&nbsp&nbsp' + '<br>' +
+                '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#01a276;"></span>' +
+                format_year_month(xArr[index1], true) + " : " +
+                tem_yArr[index1] + '万人</p>' +
+                '<p>' + "地铁&nbsp&nbsp" + '<br>' +
+                '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#f0b400;"></span>' +
+                format_year_month(xArr[index2], true) + " : " +
+                tem_yArr[index2] + '万人</p>' +
+                '</div></div>';
+            return ah;
+        }
+        var labelSetting = {
+            normal: {
+                show: true,
+                position: 'top',
+                offset: [0, 0],
+                textStyle: {
+                    fontSize: 10,
+                    color: '#49fffe'
+                },
+                formatter: function(params) {
+                    var tmp = params.dataIndex ? 1 : 0
+                    var index1 = params.dataIndex + params.seriesIndex + tmp
+                    //format_year_month(xArr[index1], true)
+                    return tem_yArr[index1] + '万'
+                }
+            }
+        };
+
+        var option = {
+            // backgroundColor:'rgba(11, 43, 92, 0.4)',
+            color: ['#01a276', '#f0b400', '#01a276', '#f0b400'],
+
+            legend: {
+                data: ['人数'],
+                textStyle: { //标题颜色
+                    color: '#3398db',
+                    fontSize: 15
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+                },
+                formatter: formatter
+            },
+            xAxis: {
+                type: 'category',
+                //
+                data: ['历史最高', '年度最高'],
+                interval: 0,
+                axisLabel: {
+                    margin: 24,
+                    textStyle: {
+                        color: '#49fffe'
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                    lineStyle: {
+                        color: 'white'
+                    },
+                    symbol: ['none', 'arrow'],
+                    symbolSize: [8, 12],
+                    symbolOffset: [0, 10]
+                },
+
+            },
+            yAxis: {
+                // name:"客流量（万）",
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: ['#00b3ea'],
+                        type: 'dotted',
+                        opacity: 0.4
+                    }
+                }
+            },
+            grid: {
+                x: 10, //默认是80px
+                y: 3, //默认是60px
+                x2: 10, //默认80px
+                y2: 48 //默认60px
+            },
+
+            series: [{
+                    name: '',
+                    data: yArr.slice(0, 2),
+                    type: 'pictorialBar',
+                    barCategoryGap: '-130%',
+                    label: labelSetting,
+                    symbol: 'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
+
+                    itemStyle: {
+                        normal: {
+                            // opacity: 0.5
+                        },
+                        emphasis: {
+                            opacity: 1
+                        }
+                    },
+                },
+                {
+                    name: '',
+                    type: 'pictorialBar',
+                    data: yArr.slice(2),
+                    barCategoryGap: '5%',
+                    symbol: 'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
+                    barGap: '-60%',
+                    label: labelSetting,
+                    itemStyle: {
+                        normal: {
+                            // opacity: 0.5
+                        },
+                        emphasis: {
+                            opacity: 1
+                        }
+                    },
+                }
+            ]
+        };
+        history_top_chart_container.clear()
+        history_top_chart_container.setOption(option, true)
+        history_top_chart_container.resize()
     }
 })
 

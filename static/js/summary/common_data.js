@@ -1,4 +1,30 @@
 var common_data = {
+    "history_top_capa": {
+        "data": {
+            "subway": {
+                "annual": {
+                    "date": "2018-09-30",
+                    "num": 31.3
+                },
+                "history": {
+                    "date": "2018-09-30",
+                    "num": 31.3
+                }
+            },
+            "train": {
+                "annual": {
+                    "date": "2018-10-07",
+                    "num": 42.4
+                },
+                "history": {
+                    "date": "2018-10-07",
+                    "num": 42.4
+                }
+            }
+        },
+        "message": "SUCC",
+        "code": 0
+    },
     "seven_day_flow": {
         "code": 0,
         "data": {
