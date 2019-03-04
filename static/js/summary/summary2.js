@@ -153,11 +153,11 @@ $(function($) {
         }
         var res = {}
         if (type == 1) {
-            res = common_data['30min_flow']
+            var str = JSON.stringify(common_data['30min_flow'])
+            res = JSON.parse(str)
         } else {
-            res = common_data['today_flow']
-            // console.log('24h')
-            // console.log(res)
+            var str = JSON.stringify(common_data['today_flow'])
+            res = JSON.parse(str)
         }
         if (res.code != 0) {
             return;

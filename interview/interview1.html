@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>interview</title>
+    <link rel="stylesheet" href="../static/Include/prism/prism.css">
+</head>
+<body>
+    <h3>前端常见题目</h3>
+    <article>
+        <li>js数据类型中哪些是引用类型，并回答 </li>
+    <pre>
+        <code class='language-js'>
+            var arrA, arrB, array=[0,1,2];
+            arrA = arrB = array;
+            arrA[1] = 5;
+            console.log(arrB, array)
+        </code>
+    </pre>
+    <p>
+        js的数据类型有 number, string, boolean, undefined, null, Object-->(Array, Function, RegExp, Date)
+    </p>
+    
+    </article>
+
+    <script src='../static/Include/prism/prism.js'></script>
+</body>
+</html>
