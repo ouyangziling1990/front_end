@@ -217,8 +217,15 @@ function interval_timeout(func, w, t, params) {
     return setTimeout(interv, w);
 }
 
-//charge 0
+//添加0， charge 0
 function charge0(num, length) {
     //这里用slice和substr均可
     return (Array(length).join("0") + num).slice(-length);
+}
+// 扩充类型的功能
+Function.prototype.method = function(name, func){
+    if(!this.prototype[name]){
+        this.prototype[name] = func;
+    }
+    return this;
 }
