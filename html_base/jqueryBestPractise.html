@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jquery 最佳实践</title>
+</head>
+<body>
+<h3>1. jquery 少改动dom结构</h3>
+<div>
+<pre>
+	-- normal
+	var ele = $("#elem")
+	ele.data(key, value)
+
+	--- better
+
+	var elem = $("#elem")
+	$.data(elem[0], key, value)
+</pre>
+</div>
+
+<h3>2. 使用Pub/Sub模式管理事件</h3>
+<pre>
+	--- normal
+	function doSomthing(){
+		doSomethingElse()
+		doOneMoreThing()
+	
+	}
+	--- better
+	function doSomething(){
+		$.trigger("DO_SOMETHING_DONE")
+	}
+	$(document).on("DO_SOMETHING_DONE", function(){
+		doSomethingElse()
+	})
+</pre>
+<script src="../static/Include/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../static/js/jqueryBetterPractise.js"></script>
+</body>
+</html>
