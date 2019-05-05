@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>递归转化</title>
+</head>
+
+<body>
+    <h3>一： 场景</h3>
+    <div>
+        <p>1.对于层级结构的内容例如层级目录、层级分类等等，在mysql数据库中常常将层级的关系转化为父子关系的多条记录</p>
+        <p>2.本文就是在工作中发现将多个父子结构转化成为层级关系的需求，整理其实现方式并分析其复杂度</p>
+    </div>
+    <h3>二： 两种计算转化方法及比较</h3>
+    <div>
+        <p>1. 代码调用 window.flatData.FlatHierarchy.recursion()</p>
+        <p>2. window.flatData.FlatHierarchy.flatWay()</p>
+        <p>3. flatWay需要根据层次的次数，写几次for调用。</p>
+    </div>
+    <h3>三： 复杂度比较</h3>
+    <div>
+        <p>
+            3.1: O(n3)
+        </p>
+        <p>
+            3.2： O(n3)
+        </p>
+        <p>根据层级的多少来确定，</p>
+    </div>
+    <h3>四： 细节比较</h3>
+    <div>
+        <p>1. 使用flatWay中，原本的flatData被改变了</p>
+    </div>
+    <h3>五: 其他的递归方式及复杂度的判定</h3>
+    <h3>六： 尾递归</h3>
+    <h3>七: 未完需要进一步深入... 算法导论</h3>
+    <script src="../static/js/algorithm/recursion_data.js"></script>
+    <script src="../static/js/algorithm/recursion.js"></script>
+</body>
+
+</html>
